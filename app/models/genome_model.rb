@@ -1,4 +1,4 @@
-class Model < ActiveRecord::Base
+class GenomeModel < ActiveRecord::Base
   self.table_name = "model"
   has_and_belongs_to_many :model_groups, join_table: 'model_group_bridge'
   has_many :builds
@@ -7,3 +7,6 @@ class Model < ActiveRecord::Base
   has_many :model_inputs
   belongs_to :subject
 end
+
+
+

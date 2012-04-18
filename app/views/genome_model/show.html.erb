@@ -1,8 +1,17 @@
 <div class="hero-unit">
-Model: <%= @model.name  %>
-  <h1>Hello, world!</h1>
-  <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-  <p><a class="btn btn-primary btn-large">Learn more »</a></p>
+  <h2>Model</h2>
+	<div>
+	<dl>
+		<dt>Name</dt><dd><%= @genome_model.name  %></dd>
+		<dt>User</dt><dd><%= @genome_model.user_name %></dd>
+		<dt>ID</td><dd><%= @genome_model.id %></dd>
+		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
+		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
+		<dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
+		<dt>Processing Profile</dt><dd><%= @genome_model.processing_profile.name %></dd>
+		<dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
+	</dl>
+	</div>
 </div>
 <div class="row-fluid">
   <div class="span4">

@@ -1,5 +1,5 @@
 GenomeDemo::Application.routes.draw do
-  resources :models
+  resources :genome_model
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
