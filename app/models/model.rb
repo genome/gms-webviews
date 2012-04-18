@@ -1,5 +1,5 @@
 class Model < ActiveRecord::Base
-  set_table_name "model"
+  self.table_name = "model"
   has_and_belongs_to_many :model_groups, join_table: 'model_group_bridge'
   has_many :builds
   belongs_to  :processing_profile
