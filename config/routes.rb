@@ -2,8 +2,8 @@ GenomeDemo::Application.routes.draw do
   resources :genome_model
 
   # The priority is based upon order of creation:
-  # first created -> highest priority.
-
+  # first created -> highest priority
+  match 'search' => 'search#search_results'
   match 'model-group/:id' => 'web_views#model_group'
 
   # Sample of regular route:
