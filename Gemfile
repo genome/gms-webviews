@@ -7,8 +7,9 @@ gem 'rails', '3.2.3'
 
 #gem 'sqlite3'
 gem 'pg'
-
 gem 'less-rails-bootstrap'
+gem 'rsolr'
+gem 'will_paginate'
 
 #Gems used only for assets and not required
 # in production environments by default.
