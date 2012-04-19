@@ -11,6 +11,12 @@ gem 'less-rails-bootstrap'
 gem 'rsolr'
 gem 'will_paginate'
 
+group :development do
+    gem 'pry'
+    gem 'pry-remote'
+    gem 'pry-nav'
+end
+
 #Gems used only for assets and not required
 # in production environments by default.
 group :assets do

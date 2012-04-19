@@ -1,0 +1,13 @@
+<div class="span3">
+  <div class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li class="nav-header">Show</li>
+      <%= render partial: 'facet', collection: @facets, locals: {query: @query, facet: @facet} %>
+    </ul>
+  </div>
+</div>
+<div class="span9">
+  <%= render partial: 'document', collection: @docs %>
+  <%= will_paginate @docs %>
+</div>
+

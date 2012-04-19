@@ -1,0 +1,4 @@
+<%= content_tag :li,
+  link_to("#{facet[0]} (#{facet[1]})" ,"/search?q=#{query}&fq=#{facet[0]}"),
+  class: facet[0] == @facet ? "active": ""
+%>

@@ -1,0 +1,20 @@
+development:
+  solr:
+    protocol: http
+    port: 8080
+    domain: solr
+    path: solr
+
+test:
+  solr:
+    protocol: http
+    port: 8080
+    domain: solr
+    path: solr
+
+production:
+  solr:
+    protocol: http
+    port: 8080
+    domain: solr
+    path: solr

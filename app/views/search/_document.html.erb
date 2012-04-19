@@ -1,0 +1,6 @@
+<div class="well">
+  <%= content_tag :strong, "#{document["display_type"]}: "%><%= content_tag :h4, link_to(document["display_title"], document["display_url0"]) %>
+  <% link_num = 1; while document["display_url#{link_num}"] %>
+    <%= link_to(content_tag(:span, document["display_label#{link_num}"], class: 'label'), document["display_url#{link_num}"]) if document["display_label#{link_num}"] != "" && document["display_url#{link_num}"] != "none" %>
+  <% link_num += 1; end %>
+</div>
