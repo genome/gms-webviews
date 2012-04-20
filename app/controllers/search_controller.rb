@@ -7,7 +7,7 @@ class SearchController < ApplicationController
       @facets = results.facets
       @facet = params[:fq]
     else
-      render 'search'
+      render :search
     end
   end
 end
