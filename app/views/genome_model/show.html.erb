@@ -51,18 +51,7 @@
         <tbody>
         <% builds.each { |build| %>
             <tr>
-                <td><%= build.build_id %> <span class="label
-                    <%= case build.event.event_status
-                        when 'Succeeded'
-                            ' label-success'
-                        when 'Failed'
-                            ' label-important'
-                        when 'Running'
-                            ' label-info'
-                        end %>
-                    ">
-                    <%= build.event.event_status %>
-                </td>
+                <td><%= build.build_id %> <%= status_label_for_build(build) %></td>
                 <td><%= build.event.date_scheduled %></td>
                 <td><%= build.event.date_completed %></td>
                 <td><a href="http://gscweb.gsc.wustl.edu/<%= build.data_directory %>"><span class="label label-inverse">data directory</span></a></td>
