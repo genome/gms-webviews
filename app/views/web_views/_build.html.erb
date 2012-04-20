@@ -1,7 +1,9 @@
 <tr>
   <td><%= build.id %></td>
-  <td><%= build.event.event_status %></td>
-  <td><%= build.event.date_scheduled %></td>
-  <td><%= build.event.date_completed %></td>
-  <td><%= build.data_directory %></td>
+  <% if build.event %>
+    <td><%= build.event.event_status %></td>
+    <td><%= build.event.date_scheduled %></td>
+    <td><%= build.event.date_completed %></td>
+    <td><%= build.data_directory %></td>
+<% end  %>
 </tr>

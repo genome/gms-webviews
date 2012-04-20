@@ -1,4 +1,4 @@
-<div style="float:left;">
+<div class="well">
   <h4><%= model.name %></h4>
   <ul>
     <li>ID: <%= model.id %></li>
@@ -7,22 +7,24 @@
     <li>Username: <%= model.user_name %></li>
     <li>Created: <%= model.creation_date %></li>
   </ul>
+  <div class="well">
+    Inputs
+    <ul>
+      <% model.model_inputs.each do |input| %>
+        <li><%= "#{input.name} - #{input.value_id}"%></li>
+      <% end %>
+    </ul>
+    <div>
+      <table>
+        <tr>
+          <th>build</th>
+          <th>status</th>
+          <th>scheduled</th>
+          <th>completed</th>
+          <th>data directory</th>
+        </tr>
+        <%= render partial: 'build', collection: model.builds %>
+      </table>
+    </div>
+  </div>
 </div>
-<div style="float:right;">
-  Inputs
-  <ul>
-  <% model.model_inputs.each do |input| %>
-    <li><%= "#{input.name} - #{input.value_id}"%></li>
-  <% end %>
-  </ul>
-<div>
-<table>
-  <tr>
-    <th>build</th>
-    <th>status</th>
-    <th>scheduled</th>
-    <th>completed</th>
-    <th>data directory</th>
-  </tr>
-  <%= render partial: 'build', collection: model.builds %>
-</table>
