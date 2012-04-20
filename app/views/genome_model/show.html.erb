@@ -33,6 +33,42 @@
     </dl>
 </div>
 
+<% if @genome_model.from_model_links.length or @genome_model.to_model_links.length %>
+<div class="span12">
+    <div class="page-header">
+        <h2>Model Links</h2>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr><th>Relationship</th><th>Model</th></tr>
+        </thead>
+
+        <tbody>
+        <% if @genome_model.from_model_links.length %>
+            <% @genome_model.from_model_links.each { |link| %>
+            <tr>
+                <td>Contains <%= link.role %></td>
+                <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %></td>
+            </tr>
+            <% } %>
+        <% end %>
+
+        <% if @genome_model.to_model_links.length %>
+            <% @genome_model.to_model_links.each { |link| %>
+            <tr>
+                <td><%= link.role %> of</td>
+                <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %></td>
+            </tr>
+            <% } %>
+        <% end %>
+        </tbody>
+
+    </table>
+</div>
+<% end %>
+
+
 <div class="span12">
     <div class="page-header">
         <h2>Builds</h2>
@@ -51,18 +87,7 @@
         <tbody>
         <% builds.each { |build| %>
             <tr>
-                <td><%= build.build_id %> <span class="label
-                    <%= case build.event.event_status
-                        when 'Succeeded'
-                            ' label-success'
-                        when 'Failed'
-                            ' label-important'
-                        when 'Running'
-                            ' label-info'
-                        end %>
-                    ">
-                    <%= build.event.event_status %>
-                </td>
+                <td><%= build.build_id %> <%= status_label_for_build(build) %></td>
                 <td><%= build.event.date_scheduled %></td>
                 <td><%= build.event.date_completed %></td>
                 <td><a href="http://gscweb.gsc.wustl.edu/<%= build.data_directory %>"><span class="label label-inverse">data directory</span></a></td>
