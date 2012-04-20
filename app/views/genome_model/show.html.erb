@@ -33,6 +33,42 @@
     </dl>
 </div>
 
+<% if @genome_model.from_model_links.length or @genome_model.to_model_links.length %>
+<div class="span12">
+    <div class="page-header">
+        <h2>Model Links</h2>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr><th>Relationship</th><th>Model</th></tr>
+        </thead>
+
+        <tbody>
+        <% if @genome_model.from_model_links.length %>
+            <% @genome_model.from_model_links.each { |link| %>
+            <tr>
+                <td>Contains <%= link.role %></td>
+                <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %></td>
+            </tr>
+            <% } %>
+        <% end %>
+
+        <% if @genome_model.to_model_links.length %>
+            <% @genome_model.to_model_links.each { |link| %>
+            <tr>
+                <td><%= link.role %> of</td>
+                <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %></td>
+            </tr>
+            <% } %>
+        <% end %>
+        </tbody>
+
+    </table>
+</div>
+<% end %>
+
+
 <div class="span12">
     <div class="page-header">
         <h2>Builds</h2>
