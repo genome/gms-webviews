@@ -1,5 +1,6 @@
 GenomeDemo::Application.routes.draw do
 
+  resources :sample
   resources :model_groups
   resources :builds
   resources :processing_profiles
