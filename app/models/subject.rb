@@ -1,6 +1,6 @@
 class Subject < ActiveRecord::Base
   self.table_name = "subject"
-  has_many :genome_models, foreign_key: 'genome_model_id'
+  has_many :genome_models
   #has_one :taxon
   #has_one :library
 
