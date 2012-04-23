@@ -1,3 +1,3 @@
-class Taxon < ActiveRecord::Base
-  # attr_accessible :title, :body
+class Taxon < Subject
+  default_scope where(subclass_name: "Genome::Taxon")
 end

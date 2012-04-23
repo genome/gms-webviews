@@ -6,7 +6,20 @@
     </small>
   </h1>
 </div>
+<div class="well span6">
+  <%= render partial: 'subject_attribute/subject_attribute_table', locals: {attributes: @subject.subject_attributes} %>
+</div>
+<%if @library || @taxon %>
+  <div class="well span6">
+    <% if @library %>
+      <h4>Library</h4>
+      <%= content_tag :span, link_to(@library.full_name, library_path(@library)) %>
+    <% end %>
+      <h4>Taxon</h4>
+      <%= content_tag :span, link_to(@taxon.name, taxon_path(@taxon)) %>
+  </div>
+<% end %>
 
-<div>
+<div class="span12">
   <%= render partial: 'genome_model/genome_model_with_builds', collection: @subject.genome_models %>
 </div>
