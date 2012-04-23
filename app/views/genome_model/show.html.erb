@@ -8,7 +8,7 @@
 		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
 		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
 		<dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
-		<dt>Processing Profile</dt><dd><%= @genome_model.processing_profile.name %></dd>
+		<dt>Processing Profile</dt><dd><%= link_to @genome_model.processing_profile.name, processing_profile_path(@genome_model.processing_profile) %></dd>
 		<dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
 	</dl>
 	</div>

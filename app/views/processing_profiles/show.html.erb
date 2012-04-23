@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h1>
+    <%= @processing_profile.name %>
+    <small>
+      <%= @processing_profile.type_name %>
+    </small>
+  </h1>
+</div>
+
+<table class="table table-striped">
+  <tbody>
+    <%= render partial: 'processing_profile_params/processing_profile_param_table_view', collection: @processing_profile.processing_profile_params %>
+  </tbody>
+</table>
