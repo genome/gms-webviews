@@ -3,12 +3,53 @@
     <h1>Build <%= @build.build_id %></h1>
     <h3><%= @build.model.name %></h3>
 
-    <dl>
-        <dt>status</dt><dd><%= @build.master_event.event_status %></dd>
-        <dt>model</dt><dd><%= @build.model.id %></dd>
-        <dt>subject</dt><dd></dd>
-        <dt>user</dt><dd></dd>
-    </dl>
+
+    <div class="container-fluid">
+
+    <div class="row-fluid">
+
+        <div class="span2" style="background-color: pink">
+            <dl>
+                <dt>status</dt><dd><%= @build.master_event.event_status %></dd>
+
+                <dt>user</dt>
+                <dd><%= @build.model.user_name %></dd>
+
+                <dt>model</dt>
+                <dd><%= link_to(content_tag(:span, @build.model_id, :class => 'label label-inverse'), genome_model_path(@build.model)) %></dd>
+
+                <dt>subject</dt>
+                <dd><%= link_to(content_tag(:span, @build.model.subject_id, :class => 'label label-inverse'), subject_path(@build.model.subject)) %></dd>
+
+                <dt>files</td>
+                <dd>
+                    <%= link_to(content_tag(:span, "data", :class => 'label label-inverse'), "/stuff") %>
+                    <%= link_to(content_tag(:span, "errors", :class => 'label label-inverse'), "/stuff") %>
+                    <%= link_to(content_tag(:span, "output", :class => 'label label-inverse'), "/stuff") %>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="span10" style="background-color: pink">
+            <dl>
+                <dt>software</dt><dd>stuff</dd>
+
+                <dt>processing profile</dt>
+                <dd><%= @build.model.processing_profile.name  %>
+                    link_to(content_tag(:span, @build.process_profile.id, :class=> 'label label-inverse'),
+                </dd>
+
+                <dt>workflow</dt><dd>other</dd>
+
+                <dt>LSF job id</dt><dd>stuff</dd>
+            </dl>
+        </div>
+
+    </div>
+    </div>
+
+
+
 </div>
 
 
