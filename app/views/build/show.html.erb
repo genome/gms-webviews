@@ -16,16 +16,16 @@
                 <dd><%= @build.model.user_name %></dd>
 
                 <dt>model</dt>
-                <dd><%= link_to(content_tag(:span, @build.model_id, :class => 'label label-inverse'), genome_model_path(@build.model)) %></dd>
+                <dd><%= link_span(@build.model_id, genome_model_path(@build.model)) %></dd>
 
                 <dt>subject</dt>
-                <dd><%= link_to(content_tag(:span, @build.model.subject_id, :class => 'label label-inverse'), subject_path(@build.model.subject)) %></dd>
+                <dd><%= link_span(@build.model.subject_id, subject_path(@build.model.subject)) %></dd>
 
                 <dt>files</td>
                 <dd>
-                    <%= link_to(content_tag(:span, "data", :class => 'label label-inverse'), "/stuff") %>
-                    <%= link_to(content_tag(:span, "errors", :class => 'label label-inverse'), "/stuff") %>
-                    <%= link_to(content_tag(:span, "output", :class => 'label label-inverse'), "/stuff") %>
+                    <%= link_span("data", "/stuff") %>
+                    <%= link_span("errors", "/stuff") %>
+                    <%= link_span("output", "/stuff") %>
                 </dd>
             </dl>
         </div>
@@ -35,8 +35,7 @@
                 <dt>software</dt><dd>stuff</dd>
 
                 <dt>processing profile</dt>
-                <dd><%= @build.model.processing_profile.name  %>
-                    link_to(content_tag(:span, @build.process_profile.id, :class=> 'label label-inverse'),
+                <dd><%= link_span @build.model.processing_profile.name, processing_profile_path(@build.model.processing_profile)  %>
                 </dd>
 
                 <dt>workflow</dt><dd>other</dd>
