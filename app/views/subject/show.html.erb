@@ -15,10 +15,8 @@
       <h4>Library</h4>
       <%= content_tag :span, link_to(@library.full_name, library_path(@library)) %>
     <% end %>
-    <%if @taxon %>
       <h4>Taxon</h4>
-      <%= content_tag :span, link_to(@taxon.name, subject_path(@taxon)) %>
-    <% end %>
+      <%= content_tag :span, link_to(@taxon.name, taxon_path(@taxon)) %>
   </div>
 <% end %>
 

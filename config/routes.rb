@@ -7,6 +7,7 @@ GenomeDemo::Application.routes.draw do
   resources :processing_profile
   resources :sample
   resources :genome_model
+  resources :taxon
 
   # The priority is based upon order of creation:
   # first created -> highest priority
