@@ -1,99 +1,90 @@
 <div class="hero-unit">
   <h2>Model</h2>
-	<div>
-	<dl>
-		<dt>Name</dt><dd><%= @genome_model.name  %></dd>
-		<dt>User</dt><dd><%= @genome_model.user_name %></dd>
-		<dt>ID</td><dd><%= @genome_model.id %></dd>
-		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
-		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
-		<dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
-		<dt>Processing Profile</dt><dd><%= link_to @genome_model.processing_profile.name, processing_profile_path(@genome_model.processing_profile) %></dd>
-		<dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
-	</dl>
-	</div>
+  <div>
+    <dl>
+      <dt>Name</dt><dd><%= @genome_model.name  %></dd>
+      <dt>User</dt><dd><%= @genome_model.user_name %></dd>
+      <dt>ID</td><dd><%= @genome_model.id %></dd>
+    <dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
+    <dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
+    <dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
+    <dt>Processing Profile</dt><dd><%= link_to @genome_model.processing_profile.name, processing_profile_path(@genome_model.processing_profile) %></dd>
+    <dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
+  </dl>
+</div>
 </div>
 
 <div class="span12">
-    <div class="page-header">
-        <h2>Inputs</h2>
-    </div>
+  <div class="page-header">
+    <h2>Inputs</h2>
+  </div>
 
-    <dl>
-        <% @genome_model.model_inputs.select(:name).uniq.each { |model_input_name|
-            model_inputs = @genome_model.model_inputs.where('name = ?',model_input_name.name)
-        %>
-            <dt><%= model_input_name.name %> <span class="badge"><%= model_inputs.length %></span></dt>
-            <dd><ul>
-                <% model_inputs.each { |model_input| %>
-                    <li><%= model_input.value_id %></li>
-                <% } %>
-            </ul></dd>
-        <% } %>
-    </dl>
+  <dl>
+    <% @genome_model.model_inputs.select(:name).uniq.each { |model_input_name|
+      model_inputs = @genome_model.model_inputs.where('name = ?',model_input_name.name)
+    %>
+    <dt><%= model_input_name.name %> <span class="badge"><%= model_inputs.length %></span></dt>
+    <dd><ul>
+      <% model_inputs.each { |model_input| %>
+        <li><%= model_input.value_id %></li>
+      <% } %>
+    </ul></dd>
+  <% } %>
+</dl>
 </div>
 
 <% if @genome_model.from_model_links.length or @genome_model.to_model_links.length %>
-<div class="span12">
+  <div class="span12">
     <div class="page-header">
-        <h2>Model Links</h2>
+      <h2>Model Links</h2>
     </div>
 
     <table class="table">
-        <thead>
-            <tr><th>Relationship</th><th>Model</th></tr>
-        </thead>
+      <thead>
+        <tr><th>Relationship</th><th>Model</th></tr>
+      </thead>
 
-        <tbody>
+      <tbody>
         <% if @genome_model.from_model_links.length %>
-            <% @genome_model.from_model_links.each { |link| %>
+          <% @genome_model.from_model_links.each { |link| %>
             <tr>
-                <td>Contains <%= link.role %></td>
-                <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %></td>
+              <td>Contains <%= link.role %></td>
+              <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %></td>
             </tr>
-            <% } %>
+          <% } %>
         <% end %>
 
         <% if @genome_model.to_model_links.length %>
-            <% @genome_model.to_model_links.each { |link| %>
+          <% @genome_model.to_model_links.each { |link| %>
             <tr>
-                <td><%= link.role %> of</td>
-                <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %></td>
+              <td><%= link.role %> of</td>
+              <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %></td>
             </tr>
-            <% } %>
+          <% } %>
         <% end %>
-        </tbody>
+      </tbody>
 
     </table>
-</div>
+  </div>
 <% end %>
 
 
 <div class="span12">
-    <div class="page-header">
-        <h2>Builds</h2>
-    </div>
+  <div class="page-header">
+    <h2>Builds</h2>
+  </div>
 
-    <%  builds = @genome_model.builds
-        if builds
-    %>
+  <% if @builds  %>
     <table class="table">
-        <thead> <tr>
-            <th>Build</th>
-            <th>Scheduled</th>
-            <th>Completed</th>
-            <th>other</th>
-        </thead></tr>
-        <tbody>
-        <% builds.each { |build| %>
-            <tr>
-                <td><%= build.build_id %> <%= status_label_for_build(build) %></td>
-                <td><%= build.event.date_scheduled %></td>
-                <td><%= build.event.date_completed %></td>
-                <td><a href="http://gscweb.gsc.wustl.edu/<%= build.data_directory %>"><span class="label label-inverse">data directory</span></a></td>
-            </tr>
-        </tbody>
-        <% } %>
+      <thead> <tr>
+          <th>Build</th>
+          <th>Scheduled</th>
+          <th>Completed</th>
+          <th>other</th>
+      </thead></tr>
+      <tbody>
+        <%= render partial: 'builds/build_table_row', collection: @builds %>
+      </tbody>
     </table>
-    <% end %>
+  <% end %>
 </div>

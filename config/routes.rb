@@ -1,4 +1,6 @@
 GenomeDemo::Application.routes.draw do
+  resources :model_groups
+
   resources :builds
 
   resources :processing_profiles
@@ -8,7 +10,6 @@ GenomeDemo::Application.routes.draw do
   # first created -> highest priority
   root :to => "search#search_results"
   match 'search' => 'search#search_results'
-  match 'model-group/:id' => 'web_views#model_group'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

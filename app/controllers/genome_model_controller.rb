@@ -1,6 +1,7 @@
 class GenomeModelController < ApplicationController
   def show
     @genome_model = GenomeModel.find(params[:id])
+    @builds = @genome_model.builds
 
     respond_to do |format|
       format.html

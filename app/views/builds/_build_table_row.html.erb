@@ -1,0 +1,6 @@
+<tr>
+    <td><%= build_table_row.build_id %> <%= status_label_for_build(build_table_row) %></td>
+    <td><%= build_table_row.master_event.date_scheduled %></td>
+    <td><%= build_table_row.master_event.date_completed %></td>
+    <td><a href="http://gscweb.gsc.wustl.edu/<%= build_table_row.data_directory %>"><span class="label label-inverse">data directory</span></a></td>
+</tr>
