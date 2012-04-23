@@ -1,6 +1,5 @@
 GenomeDemo::Application.routes.draw do
 
-  resources :taxon
   resources :library
   resources :subject
   resources :model_group
