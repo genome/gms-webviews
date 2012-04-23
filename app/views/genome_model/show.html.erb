@@ -11,7 +11,7 @@
 		<dt>User</dt><dd><%= @genome_model.user_name %></dd>
 		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
 		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
-		<dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
+		<dt>Subject</dt><dd><%= link_span @genome_model.subject_id, subject_path(@genome_model.subject_id) %></dd>
 	</dl>
 </div>
 
