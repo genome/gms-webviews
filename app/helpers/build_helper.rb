@@ -1,4 +1,4 @@
-module BuildsHelper
+module BuildHelper
     # returns a string containing a span tag to represent the success/fail
     # status of a build
     def status_label_for_build(build)
