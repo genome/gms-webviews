@@ -1,7 +1,14 @@
 
-<h1>Build: <%= @build.build_id %></h1>
-<h2>of model <%= @build.model.id %></h2>
+<div class="well">
+    <h1>Build <%= @build.build_id %></h1>
+    <h3><%= @build.model.name %></h3>
 
+    <dl>
+        <dt>status</dt><dd><%= @build.master_event.event_status %></dd>
+        <dt>model</dt><dd><%= @build.model.id %></dd>
+        <dt>subject</dt><dd></dd>
+        <dt>user</dt><dd></dd>
+    </dl>
 </div>
 
 
