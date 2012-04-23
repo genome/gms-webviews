@@ -1,0 +1,7 @@
+<div class="hero-unit">
+  <h2>Processing Profile</h2><%= @processing_profile.name %>
+</div>
+
+<dl>
+    <%= render partial: 'processing_profile_param/processing_profile_param_table_row', collection: @processing_profile.processing_profile_params %>
+</dl>
