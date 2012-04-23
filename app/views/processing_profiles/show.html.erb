@@ -1,14 +1,7 @@
-<div class="page-header">
-  <h1>
-    <%= @processing_profile.name %>
-    <small>
-      <%= @processing_profile.type_name %>
-    </small>
-  </h1>
+<div class="hero-unit">
+  <h2>Processing Profile</h2><%= @processing_profile.name %>
 </div>
 
-<table class="table table-striped">
-  <tbody>
+<dl>
     <%= render partial: 'processing_profile_params/processing_profile_param_table_row', collection: @processing_profile.processing_profile_params %>
-  </tbody>
-</table>
+</dl>

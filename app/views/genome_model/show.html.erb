@@ -1,17 +1,28 @@
 <div class="hero-unit">
-  <h2>Model</h2>
-  <div>
-    <dl>
-      <dt>Name</dt><dd><%= @genome_model.name  %></dd>
-      <dt>User</dt><dd><%= @genome_model.user_name %></dd>
-      <dt>ID</td><dd><%= @genome_model.id %></dd>
-    <dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
-    <dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
-    <dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
-    <dt>Processing Profile</dt><dd><%= link_to @genome_model.processing_profile.name, processing_profile_path(@genome_model.processing_profile) %></dd>
-    <dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
-  </dl>
+  <h2>Model</h2> <%=@genome_model.name %>
 </div>
+
+<div class="span4">
+    <div class="page-header">
+        <h3>Model Attributes</h3>
+    </div>
+	<dl>
+		<dt>ID</td><dd><%= @genome_model.id %></dd>
+		<dt>User</dt><dd><%= @genome_model.user_name %></dd>
+		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
+		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
+		<dt>Subject</dt><dd><%= @genome_model.subject_id %></dd>
+	</dl>
+</div>
+
+<div class="span4">
+    <div class="page-header">
+        <h3>Processing Profile</h3>
+    </div>
+    <dl>
+        <dt>Name</dt><dd><%= link_to(content_tag(:span, @genome_model.processing_profile.name, :class => 'label label-inverse'), processing_profile_path(@genome_model.processing_profile)) %></dd>
+        <dt>Type</dt><dd><%= @genome_model.processing_profile.type_name %></dd>
+    </dl>
 </div>
 
 <div class="span12">
@@ -49,7 +60,7 @@
           <% @genome_model.from_model_links.each { |link| %>
             <tr>
               <td>Contains <%= link.role %></td>
-              <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %></td>
+              <td>Model <%= link_to(content_tag(:span, link.to_model_id, :class => 'label label-inverse'), link.to_model_id) %> <%= link.to_model.name %></td>
             </tr>
           <% } %>
         <% end %>
@@ -58,7 +69,7 @@
           <% @genome_model.to_model_links.each { |link| %>
             <tr>
               <td><%= link.role %> of</td>
-              <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %></td>
+              <td>Model <%= link_to(content_tag(:span, link.from_model_id, :class => 'label label-inverse'), link.from_model_id) %> <%= link.from_model.name %></td>
             </tr>
           <% } %>
         <% end %>
