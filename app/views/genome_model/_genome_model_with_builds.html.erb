@@ -11,7 +11,7 @@
     Inputs
     <ul>
       <% genome_model_with_builds.model_inputs.each do |input| %>
-        <li><%= "#{input.name} - #{input.value_id}"%></li>
+        <li><%= input.name %> - <%= link_span(input.value_id, build_path(input.value_id)) %></li>
       <% end %>
     </ul>
     <div>
