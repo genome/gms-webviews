@@ -1,15 +1,9 @@
 GenomeDemo::Application.routes.draw do
 
-<<<<<<< HEAD
   resources :model_group
   resources :build
   resources :processing_profile
-=======
   resources :sample
-  resources :model_groups
-  resources :builds
-  resources :processing_profiles
->>>>>>> 321cc90ec40b18fdcf29108bd20578c02a1dce39
   resources :genome_model
 
   # The priority is based upon order of creation:
