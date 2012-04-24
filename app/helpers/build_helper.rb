@@ -19,10 +19,23 @@ module BuildHelper
         content_tag(:span, status, :class => classes)
     end
 
-    def render_build_inputs(build_inputs)
-        input_list_contents = build_inputs.inject([]) {
+    def render_build_inputs(build_input_data)
+        input_list_contents = build_input_data['only_on_model'].values.inject([]) {
             |contents, build_input|
+            contents.push(content_tag(:dt, build_input.name))
+            contents.push(content_tag(:dd, 'missing on build'))
+            contents
+        }
 
+        input_list_contents = build_input_data['only_on_build'].values.inject(input_list_contents) {
+            |contents, build_input|
+            contents.push(content_tag(:dt, build_input.name))
+            contents.push(render_value_for_model_or_build_input(build_input) + ' (missing on model)')
+            contents
+        }
+
+        input_list_contents = build_input_data['different'].values.inject(input_list_contents) {
+            |contents, build_input|
             contents.push(content_tag(:dt, build_input.name))
             contents.push(render_value_for_model_or_build_input(build_input))
             contents

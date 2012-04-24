@@ -10,7 +10,7 @@
         <td></td>
         <td><span class="label label-warning">Inputs differ</span></td>
         <td colspan="3">
-            <%= render_build_inputs(missing_inputs_for_build[build_table_row.build_id].values) %>
+            <%= render_build_inputs(@delta_inputs_for_build[build_table_row.build_id]) %>
         </td>
     </tr>
 <% end %>

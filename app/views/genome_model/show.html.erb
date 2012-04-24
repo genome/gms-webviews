@@ -103,7 +103,7 @@
           <th>other</th>
       </thead></tr>
       <tbody>
-        <%= render partial: 'build/build_table_row', collection: @builds, :locals => { :missing_inputs_for_build => @missing_inputs_for_build } %>
+        <%= render partial: 'build/build_table_row', collection: @builds, :locals => { :missing_inputs_for_build => @delta_inputs_for_build } %>
       </tbody>
     </table>
   <% end %>
