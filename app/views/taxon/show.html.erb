@@ -1,11 +1,11 @@
 <div class="page-header">
   <h1>
-    <%= @taxon.name %>
+    <%= @subject.name %>
     <small>
       taxon
     </small>
   </h1>
 </div>
 <div class="well span6">
-  <%= render partial: 'subject_attribute/subject_attribute_table', locals: {attributes: @taxon.subject_attributes} %>
+  <%= render partial: 'subject_attribute/subject_attribute_table', locals: {attributes: @subject.subject_attributes} %>
 </div>

@@ -1,2 +1,2 @@
-class Genome::Individual < Genome::Subject
+class Genome::PopulationGroup < Genome::Subject
 end
