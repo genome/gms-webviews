@@ -40,15 +40,19 @@
   <div class="page-header">
     <h2>Inputs</h2>
   </div>
-
   <dl>
     <% @inputs_by_name.each_pair do |name, inputs| %>
-    <dt><%= name %> <span class="badge"><%= inputs.count %></span></dt>
-    <%= render partial: 'model_input/dd', collection: inputs %>
-  <% end %>
-</dl>
+      <dt><%= name %> <%= content_tag :span, inputs.count, class: 'badge' %></dt>
+      <dd>
+        <ul>
+          <%= render partial: 'model_input/li', collection: inputs %>
+        </ul>
+      </dd>
+    <% end %>
+  </dl>
 </div>
 
+<% binding.pry %>
 <% if @genome_model.from_model_links.length or @genome_model.to_model_links.length %>
   <div class="span12 well">
     <div class="page-header">
