@@ -85,7 +85,7 @@
 <% end %>
 
 
-<div class="span12 well">
+<div class="span12">
   <div class="page-header">
     <h2>Builds</h2>
   </div>
@@ -100,7 +100,7 @@
           <th>other</th>
       </thead></tr>
       <tbody>
-        <%= render partial: 'build/build_table_row', collection: @builds %>
+        <%= render partial: 'build/build_table_row', collection: @builds, :locals => { :missing_inputs_for_build => @missing_inputs_for_build } %>
       </tbody>
     </table>
   <% end %>

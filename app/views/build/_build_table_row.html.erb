@@ -5,3 +5,12 @@
   <td><%= (build_table_row.master_event && build_table_row.master_event.date_completed) ? time_tag(build_table_row.master_event.date_completed.localtime) : '' %></td>
   <td><%= link_span 'data directory', "http://gscweb.gsc.wustl.edu/#{build_table_row.data_directory}", "icon-folder-open icon-white" %></td>
 </tr>
+<% if missing_inputs_for_build[build_table_row.build_id].keys.length != 0 %>
+    <tr>
+        <td></td>
+        <td><span class="label label-warning">Inputs differ</span></td>
+        <td colspan="3">
+            <%= render_build_inputs(missing_inputs_for_build[build_table_row.build_id].values) %>
+        </td>
+    </tr>
+<% end %>
