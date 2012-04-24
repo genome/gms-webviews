@@ -11,7 +11,14 @@ class Genome::GenomeModel < ActiveRecord::Base
 #  has_many :child_linked_models, class_name: 'genome_model', foreign_key: 'from_model_id', join_table: 'model_link'
 #  has_many :parent_linked_models, class_name: 'genome_model', foreign_key: 'to_model_id', join_table: 'model_link'
 
-end
+  def inputs_by_name
+    self.model_inputs.inject({}) do |by_name, input|
+      by_name[input.name] = [] unless by_name[input.name]
+      by_name[input.name] << input
+      by_name
+    end
+  end
 
+end
 
 
