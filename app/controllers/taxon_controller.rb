@@ -1,5 +1,5 @@
 class TaxonController < ApplicationController
   def show
-    @taxon = Taxon.find(params[:id])
+    @taxon = Genome::Taxon.find(params[:id])
   end
 end

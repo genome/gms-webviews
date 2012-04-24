@@ -1,6 +1,6 @@
 class GenomeModelController < ApplicationController
   def show
-    @genome_model = GenomeModel.find(params[:id])
+    @genome_model = Genome::GenomeModel.find(params[:id])
     @builds = @genome_model.builds
     @most_recent_completed = (@genome_model.builds.select{|build| build.master_event.event_status == 'Succeeded'}).first
 

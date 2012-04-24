@@ -1,4 +1,4 @@
-class ModelInput < ActiveRecord::Base
+class Genome::ModelInput < ActiveRecord::Base
 
   self.table_name = "model_input"
   default_scope include: :build

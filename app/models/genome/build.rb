@@ -1,4 +1,4 @@
-class Build < ActiveRecord::Base
+class Genome::Build < ActiveRecord::Base
     self.table_name = "build"
     scope :sorted_by_date_scheduled, includes(:master_event).joins(:master_event).order('date_scheduled')
     belongs_to :model
