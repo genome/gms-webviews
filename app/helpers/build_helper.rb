@@ -24,18 +24,7 @@ module BuildHelper
             |contents, build_input|
 
             contents.push(content_tag(:dt, build_input.name))
-
-            case build_input.name
-                when 'reference_sequence'
-                    value = link_span(build_input.value_id, build_path(build_input.value_id))
-                when 'annotation_data_source_directory'
-                    value = link_span(build_input.value_id,
-                                                "http://gscweb.gsc.wustl.edu/#{build_input.value_id}",
-                                                "icon-folder-open icon-white")
-                else
-                    value = build_input.value_id;
-            end
-            contents.push(content_tag(:dd, value))
+            contents.push(render_value_for_model_or_build_input(build_input))
             contents
         }
 
