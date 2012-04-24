@@ -18,4 +18,27 @@ module BuildHelper
         end
         content_tag(:span, status, :class => classes)
     end
+
+    def render_build_inputs(build_inputs)
+        input_list_contents = build_inputs.inject([]) {
+            |contents, build_input|
+
+            contents.push(content_tag(:dt, build_input.name))
+
+            case build_input.name
+                when 'reference_sequence'
+                    value = link_span(build_input.value_id, build_path(build_input.value_id))
+                when 'annotation_data_source_directory'
+                    value = link_span(build_input.value_id,
+                                                "http://gscweb.gsc.wustl.edu/#{build_input.value_id}",
+                                                "icon-folder-open icon-white")
+                else
+                    value = build_input.value_id;
+            end
+            contents.push(content_tag(:dd, value))
+            contents
+        }
+
+        content_tag(:dl, raw(input_list_contents.join));
+    end
 end
