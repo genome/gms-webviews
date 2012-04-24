@@ -2,7 +2,7 @@
   <h2>Model</h2> <%=@genome_model.name %>
 </div>
 
-<div class="span4">
+<div class="span4 well">
     <div class="page-header">
         <h3>Model Attributes</h3>
     </div>
@@ -12,10 +12,21 @@
 		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
 		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
 		<dt>Subject</dt><dd><%= link_span @genome_model.subject_id, subject_path(@genome_model.subject_id) %></dd>
+        <dt>Last Complete Build</dt>
+            <dd><% if @last_complete_build %>
+                <ul>
+                    <li><%= link_span(@last_complete_build.build_id, build_path(@last_complete_build))  %></li>
+                    <li><%= link_span('data directory', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}", 'icon-folder-open icon-white')   %></li>
+                    <li><%= link_span('Summary Report', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html", 'icon-file icon-white')  %></li>
+                </ul>
+                <% else %>
+                    none
+                <% end %>
+            </dd>
 	</dl>
 </div>
 
-<div class="span4">
+<div class="span4 well">
     <div class="page-header">
         <h3>Processing Profile</h3>
     </div>
@@ -25,7 +36,7 @@
     </dl>
 </div>
 
-<div class="span12">
+<div class="span12 well">
   <div class="page-header">
     <h2>Inputs</h2>
   </div>
@@ -45,7 +56,7 @@
 </div>
 
 <% if @genome_model.from_model_links.length or @genome_model.to_model_links.length %>
-  <div class="span12">
+  <div class="span12 well">
     <div class="page-header">
       <h2>Model Links</h2>
     </div>
@@ -80,7 +91,7 @@
 <% end %>
 
 
-<div class="span12">
+<div class="span12 well">
   <div class="page-header">
     <h2>Builds</h2>
   </div>
