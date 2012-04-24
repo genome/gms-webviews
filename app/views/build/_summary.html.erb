@@ -1,0 +1,47 @@
+
+    <div class="container-fluid">
+
+    <div class="row-fluid">
+
+        <div class="span2">
+            <dl>
+                <dt>status</dt><dd><%= @build.master_event.event_status %></dd>
+
+                <dt>user</dt>
+                <dd><%= @build.model.user_name %></dd>
+
+                <dt>model</dt>
+                <dd><%= link_span(@build.model_id, genome_model_path(@build.model)) %></dd>
+
+                <dt>subject</dt>
+                <dd><%= link_span(@build.model.subject_id, subject_path(@build.model.subject)) %></dd>
+
+                <dt>files</td>
+                <dd>
+                    <%= link_span("data", "/stuff") %>
+                    <%= link_span("errors", "/stuff") %>
+                    <%= link_span("output", "/stuff") %>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="span10">
+            <dl>
+                <dt>software</dt><dd>stuff</dd>
+
+                <dt>processing profile</dt>
+                <dd>
+                    <%= link_span(@build.model.processing_profile.id, processing_profile_path(@build.model.processing_profile))  %>
+                    <%= @build.model.processing_profile.name %> 
+                </dd>
+
+                <dt>workflow</dt><dd>other</dd>
+
+                <dt>LSF job id</dt><dd>stuff</dd>
+            </dl>
+        </div>
+
+    </div> <!-- row-fluid -->
+    </div> <!-- container-fluid -->
+
+
