@@ -3,52 +3,26 @@
     <h1>Build <%= @build.build_id %></h1>
     <h3><%= @build.model.name %></h3>
 
-
-    <div class="container-fluid">
-
-    <div class="row-fluid">
-
-        <div class="span2" style="background-color: pink">
-            <dl>
-                <dt>status</dt><dd><%= @build.master_event.event_status %></dd>
-
-                <dt>user</dt>
-                <dd><%= @build.model.user_name %></dd>
-
-                <dt>model</dt>
-                <dd><%= link_span(@build.model_id, genome_model_path(@build.model)) %></dd>
-
-                <dt>subject</dt>
-                <dd><%= link_span(@build.model.subject_id, subject_path(@build.model.subject)) %></dd>
-
-                <dt>files</td>
-                <dd>
-                    <%= link_span("data", "/stuff") %>
-                    <%= link_span("errors", "/stuff") %>
-                    <%= link_span("output", "/stuff") %>
-                </dd>
-            </dl>
-        </div>
-
-        <div class="span10" style="background-color: pink">
-            <dl>
-                <dt>software</dt><dd>stuff</dd>
-
-                <dt>processing profile</dt>
-                <dd><%= link_span @build.model.processing_profile.name, processing_profile_path(@build.model.processing_profile)  %>
-                </dd>
-
-                <dt>workflow</dt><dd>other</dd>
-
-                <dt>LSF job id</dt><dd>stuff</dd>
-            </dl>
-        </div>
-
-    </div>
-    </div>
-
-
+    <br/>
+    <%= render partial: 'build/summary', locals: { build: @build } %>
 
 </div>
+
+    <div class="span12" style="background-color: pink">
+      <div class="page-header">
+        <h2>Inputs</h2>
+      </div>
+
+        <table class="table">
+            <tbody>
+          <% @inputs.each do |i| %>
+            <tr>
+                <td><%= i.name %></td>
+                <td><%= i.value_id %></td>
+            </tr>
+          <% end  %>
+            </tbody>
+        </table>
+    </div>
 
 
