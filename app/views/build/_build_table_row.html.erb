@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_span(build_table_row.id, build_path(build_table_row)) %></td>
-  <td><%= status_label_for_build(build_table_row) %>
-  <td><%= time_tag build_table_row.master_event.date_scheduled.localtime %></td>
-  <td><%= time_tag build_table_row.master_event.date_completed.localtime %></td>
+  <td><%= status_label_for_build(build_table_row) %></td>
+  <td><%= build_table_row.master_event ? time_tag(build_table_row.master_event.date_scheduled.localtime) : '' %></td>
+  <td><%= (build_table_row.master_event && build_table_row.master_event.date_completed) ? time_tag(build_table_row.master_event.date_completed.localtime) : '' %></td>
   <td><%= link_span 'data directory', "http://gscweb.gsc.wustl.edu/#{build_table_row.data_directory}", "icon-folder-open icon-white" %></td>
 </tr>
