@@ -11,6 +11,7 @@ GenomeDemo::Application.routes.draw do
   resources :genome_model
   resources :taxon
   resources :build_input
+  resources :instrument_data
 
   # The priority is based upon order of creation:
   # first created -> highest priority
