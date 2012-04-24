@@ -15,9 +15,9 @@
         <dt>Last Complete Build</dt>
             <dd><% if @last_complete_build %>
                 <ul>
-                    <li><%= link_to content_tag(:span, @last_complete_build.build_id, :class => 'label label-inverse'), build_path(@last_complete_build) %></li>
-                    <li><%= link_to content_tag(:span, '<i class="icon-folder-open icon-white"></i> data directory', :class => 'label label-inverse'), "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}"  %></li>
-                    <li><%= link_to content_tag(:span, '<i class="icon-file icon-white"></i> Summary Report'), "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html"  %></li>
+                    <li><%= link_span(@last_complete_build.build_id, build_path(@last_complete_build))  %></li>
+                    <li><%= link_span('data directory', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}", 'icon-folder-open icon-white')   %></li>
+                    <li><%= link_span('Summary Report', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html", 'icon-file icon-white')  %></li>
                 </ul>
                 <% else %>
                     none
