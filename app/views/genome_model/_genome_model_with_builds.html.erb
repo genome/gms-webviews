@@ -1,23 +1,24 @@
 <div class="well">
   <h4><%= genome_model_with_builds.name %></h4>
   <ul>
-    <li>ID: <%= genome_model_with_builds.id %></li>
-    <li>Subject Name: <%= genome_model_with_builds.subject.name %></li>
+    <li>ID: <%= link_span(genome_model_with_builds.id, genome_model_path(genome_model_with_builds))%></li>
+    <li>Subject Name: <%= link_span(genome_model_with_builds.subject.name, subject_path(genome_model_with_builds.subject)) %></li>
     <li>Subject Type: <%= genome_model_with_builds.subject_class_name %></li>
     <li>Username: <%= genome_model_with_builds.user_name %></li>
-    <li>Created: <%= genome_model_with_builds.creation_date %></li>
+    <li>Created: <%= time_tag genome_model_with_builds.creation_date.localtime %></li>
   </ul>
   <div class="well">
     Inputs
     <ul>
       <% genome_model_with_builds.model_inputs.each do |input| %>
-        <li><%= "#{input.name} - #{input.value_id}"%></li>
+        <li><%= input.name %> - <%= link_span(input.value_id, build_path(input.value_id)) %></li>
       <% end %>
     </ul>
     <div>
       <table class="table table-striped">
         <tr>
           <th>build</th>
+          <th>status</th>
           <th>scheduled</th>
           <th>completed</th>
           <th>data directory</th>
