@@ -13,14 +13,16 @@
 		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
 		<dt>Subject</dt><dd><%= link_span @genome_model.subject_id, subject_path(@genome_model.subject_id) %></dd>
         <dt>Last Complete Build</dt>
-            <dl><% if @last_complete_build %>
-                    <%= link_to(content_tag(:span, @last_complete_build.build_id, :class => 'label label-inverse'), build_path(@last_complete_build)) %>
-                    <%= link_to(content_tag(:span, '<i class="icon-folder-open icon-white"></i> data directory', :class => 'label label-inverse', 'http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}')) %>
-                    <%= link_to(content_tag(:span, '<i class="icon-file icon-white"></i> Summary Report', 'http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html')) %>
+            <dd><% if @last_complete_build %>
+                <ul>
+                    <li><%= link_to content_tag(:span, @last_complete_build.build_id, :class => 'label label-inverse'), build_path(@last_complete_build) %></li>
+                    <li><%= link_to content_tag(:span, '<i class="icon-folder-open icon-white"></i> data directory', :class => 'label label-inverse'), "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}"  %></li>
+                    <li><%= link_to content_tag(:span, '<i class="icon-file icon-white"></i> Summary Report'), "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html"  %></li>
+                </ul>
                 <% else %>
                     none
                 <% end %>
-            </dl>
+            </dd>
 	</dl>
 </div>
 
