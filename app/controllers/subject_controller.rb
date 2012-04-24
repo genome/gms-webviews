@@ -1,4 +1,5 @@
 class SubjectController < ApplicationController
+
   def show
     @subject = Genome::Subject.with_models_and_builds.with_attributes.with_libraries.find(params[:id])
     @taxon = @subject.taxon if @subject.respond_to?(:taxon)
@@ -14,6 +15,6 @@ class SubjectController < ApplicationController
     when Genome::Taxon
       render 'taxon/show'
     end
-
   end
+
 end
