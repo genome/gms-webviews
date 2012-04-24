@@ -5,4 +5,5 @@ class Genome::Build < ActiveRecord::Base
     has_many :build_inputs, foreign_key: :build_id
     has_one :model, class_name: "GenomeModel", foreign_key: :genome_model_id, primary_key: :model_id
     has_one :master_event, class_name: :Event, conditions: ["event_type = 'genome model build'"]
+    has_many :build_inputs, foreign_key: 'build_id'
 end

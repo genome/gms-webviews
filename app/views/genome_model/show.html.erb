@@ -42,16 +42,10 @@
   </div>
 
   <dl>
-    <% @genome_model.model_inputs.select(:name).uniq.each { |model_input_name|
-      model_inputs = @genome_model.model_inputs.where('name = ?',model_input_name.name)
-    %>
-    <dt><%= model_input_name.name %> <span class="badge"><%= model_inputs.length %></span></dt>
-    <dd><ul>
-      <% model_inputs.each { |model_input| %>
-        <li><%= link_span(model_input.value_id, build_path(model_input.value_id)) %></li>
-      <% } %>
-    </ul></dd>
-  <% } %>
+    <% @inputs_by_name.each_pair do |name, inputs| %>
+    <dt><%= name %> <span class="badge"><%= inputs.count %></span></dt>
+    <%= render partial: 'model_input/dd', collection: inputs %>
+  <% end %>
 </dl>
 </div>
 
@@ -91,7 +85,7 @@
 <% end %>
 
 
-<div class="span12 well">
+<div class="span12">
   <div class="page-header">
     <h2>Builds</h2>
   </div>
@@ -106,7 +100,7 @@
           <th>other</th>
       </thead></tr>
       <tbody>
-        <%= render partial: 'build/build_table_row', collection: @builds %>
+        <%= render partial: 'build/build_table_row', collection: @builds, :locals => { :missing_inputs_for_build => @missing_inputs_for_build } %>
       </tbody>
     </table>
   <% end %>
