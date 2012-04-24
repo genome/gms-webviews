@@ -10,6 +10,7 @@ GenomeDemo::Application.routes.draw do
   resources :population_group
   resources :genome_model
   resources :taxon
+  resources :build_input
 
   # The priority is based upon order of creation:
   # first created -> highest priority

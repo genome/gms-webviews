@@ -8,21 +8,32 @@
 
 </div>
 
-    <div class="span12" style="background-color: pink">
-      <div class="page-header">
-        <h2>Inputs</h2>
-      </div>
+<div class="span12">
+  <div class="page-header">
+    <h2>Inputs</h2>
+  </div>
 
-        <table class="table">
-            <tbody>
-          <% @inputs.each do |i| %>
-            <tr>
-                <td><%= i.name %></td>
-                <td><%= i.value_id %></td>
-            </tr>
-          <% end  %>
-            </tbody>
-        </table>
+    <table class="table table-bordered">
+        <tbody>
+      <% @inputs.each do |i| %>
+        <tr>
+            <td><%= i.name %></td>
+            <td><%= link_span("here", build_input_path(i)) %>
+                <%= i.value_id %>
+            </td>
+        </tr>
+      <% end  %>
+        </tbody>
+    </table>
+</div>
+
+<div class="span12">
+    <div class="page-header">
+        <h2>Workflow</h2>
     </div>
+
+    <div class="span12"/>
+https://imp.gsc.wustl.edu/viewajax/workflow/operation/instance/statuspopup.html?id=22955365
+</div>
 
 
