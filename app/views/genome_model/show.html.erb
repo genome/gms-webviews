@@ -60,7 +60,7 @@
           <% @genome_model.from_model_links.each { |link| %>
             <tr>
               <td>Contains <%= link.role %></td>
-              <td>Model <%= link_span(link.to_model_id, genome_model_link(link.to_model_id)) %> <%= link.to_model.name %></td>
+              <td>Model <%= link_span(link.to_model_id, genome_model_path(link.to_model_id)) %> <%= link.to_model.name %></td>
             </tr>
           <% } %>
         <% end %>
@@ -69,7 +69,7 @@
           <% @genome_model.to_model_links.each { |link| %>
             <tr>
               <td><%= link.role %> of</td>
-              <td>Model <%= link_span(link.from_model_id, genome_model_link(link.from_model_id)) %> <%= link.to_model.name %></td>
+              <td>Model <%= link_span(link.from_model_id, genome_model_path(link.from_model_id)) %> <%= link.to_model.name %></td>
             </tr>
           <% } %>
         <% end %>
@@ -89,6 +89,7 @@
     <table class="table">
       <thead> <tr>
           <th>Build</th>
+          <th>Status</th>
           <th>Scheduled</th>
           <th>Completed</th>
           <th>other</th>
