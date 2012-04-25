@@ -20,10 +20,9 @@ class Genome::Model < ActiveRecord::Base
     end
   end
 
-
   class << self
     def find_for_model_page(id)
-      where(genome_model_id: id).includes(:model_inputs, :from_model_links, builds: [:build_inputs, :master_event]).first
+      where(genome_model_id: id).includes(:model_inputs, to_model_links: [:to_model], from_model_links: [:to_model], builds: [:build_inputs, :master_event]).first
     end
   end
 
