@@ -1,4 +1,4 @@
-class ModelGroup < ActiveRecord::Base
+class Genome::ModelGroup < ActiveRecord::Base
   set_table_name "model_group"
   has_and_belongs_to_many :models, association_foreign_key: 'model_id', join_table: 'model_group_bridge'
 

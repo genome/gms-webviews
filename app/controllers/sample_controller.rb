@@ -1,5 +1,7 @@
 class SampleController < ApplicationController
   def show
-    @sample = Genome::Sample.find(params[:id])
+    @subject = Genome::Sample.find(params[:id], include: [ models: {builds: :build_inputs} ] )
+    @taxon = @subject.taxon
+    @library = @subject.libraries.first
   end
 end
