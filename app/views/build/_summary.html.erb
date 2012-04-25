@@ -17,9 +17,9 @@
 
         <dt>files</td>
       <dd>
-      <%= link_span("data", "/stuff") %>
-      <%= link_span("errors", "/stuff") %>
-      <%= link_span("output", "/stuff") %>
+        <%= link_span('data', "http://gscweb.gsc.wustl.edu#{@build.data_directory}")  %>
+        <%= link_span('errors', "http://gscweb.gsc.wustl.edu#{@build.data_directory}/logs/#{@build.master_event.id}.err")  %>
+        <%= link_span('output', "http://gscweb.gsc.wustl.edu#{@build.data_directory}/logs/#{@build.master_event.id}.out")  %>
       </dd>
     </dl>
   </div>
