@@ -18,8 +18,8 @@
       <% @inputs.each do |i| %>
         <tr>
             <td><%= i.name %></td>
-            <td><%= link_span("here", build_input_path(i)) %>
-                <%= i.value_id %>
+            <td>
+                <%= render_value_for_model_or_build_input(i) %>
             </td>
         </tr>
       <% end  %>
@@ -31,9 +31,8 @@
     <div class="page-header">
         <h2>Workflow</h2>
     </div>
-
-    <div class="span12"/>
-https://imp.gsc.wustl.edu/viewajax/workflow/operation/instance/statuspopup.html?id=22955365
+    
+    not in postgres yet.
 </div>
 
 
