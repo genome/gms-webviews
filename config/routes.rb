@@ -8,7 +8,7 @@ GenomeDemo::Application.routes.draw do
   resources :sample
   resources :individual
   resources :population_group
-  resources :genome_model
+  resources :model
   resources :taxon
   resources :build_input
   resources :instrument_data

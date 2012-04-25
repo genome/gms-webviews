@@ -1,5 +1,6 @@
-class Genome::GenomeModel < ActiveRecord::Base
+class Genome::Model < ActiveRecord::Base
   self.table_name = "model"
+  self.primary_key = 'genome_model_id'
   has_and_belongs_to_many :model_groups, foreign_key: 'model_id', join_table: 'model_group_bridge'
   has_many :builds, foreign_key: 'model_id'
   belongs_to  :processing_profile
@@ -16,6 +17,12 @@ class Genome::GenomeModel < ActiveRecord::Base
       by_name[input.name] = [] unless by_name[input.name]
       by_name[input.name] << input
       by_name
+    end
+  end
+
+  class << self
+    def find_for_model_page(id)
+      where(genome_model_id: id).includes(:model_inputs, to_model_links: [:to_model], from_model_links: [:to_model], builds: [:build_inputs, :master_event]).first
     end
   end
 

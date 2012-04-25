@@ -34,7 +34,7 @@ module ApplicationHelper
             path_url = "http://gscweb.gsc.wustl.edu/#{input.value_id}"
             extra_classes = "icon-file icon-white"
         when /^Genome::Model/  # Keep this one at the end, since other classes start with Genome::Model, too
-            path_finder = 'genome_model_path'
+            path_finder = 'model_path'
         else
             case input.name
             when /directory/

@@ -5,12 +5,12 @@
     <li>ID: <%= @mg.id %></li>
     <li>Name: <%= @mg.name %></li>
     <li>User Name: <%= @mg.user_name %></li>
-    <li>Model Count: <%= @mg.genome_models.count %></li>
+    <li>Model Count: <%= @mg.models.count %></li>
   </ul>
 </div>
 
 <div>
-  <%= render partial: 'genome_model/genome_model_with_builds', collection: @mg.genome_models %>
+  <%= render partial: 'model/genome_model_with_builds', collection: @mg.genome_models %>
 </div>
 
 

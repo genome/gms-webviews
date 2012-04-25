@@ -1,7 +1,7 @@
 <div class="well">
   <h4><%= genome_model_with_builds.name %></h4>
   <ul>
-    <li>ID: <%= link_span(genome_model_with_builds.id, genome_model_path(genome_model_with_builds))%></li>
+    <li>ID: <%= link_span(genome_model_with_builds.id, model_path(genome_model_with_builds))%></li>
     <li>Subject Name: <%= link_span(genome_model_with_builds.subject.name, subject_path(genome_model_with_builds.subject)) %></li>
     <li>Subject Type: <%= genome_model_with_builds.subject_class_name %></li>
     <li>Username: <%= genome_model_with_builds.user_name %></li>

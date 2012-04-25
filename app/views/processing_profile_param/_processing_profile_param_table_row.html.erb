@@ -3,7 +3,7 @@
   </dt>
   <dd>
     <%= processing_profile_param_table_row.param_name == 'reference_sequence_model_id' ?
-          link_span(processing_profile_param_table_row.param_value, genome_model_path(processing_profile_param_table_row.param_value)) :
+          link_span(processing_profile_param_table_row.param_value, model_path(processing_profile_param_table_row.param_value)) :
         processing_profile_param_table_row.param_value
     %>
   </dd>

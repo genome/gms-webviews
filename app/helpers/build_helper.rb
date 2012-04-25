@@ -24,21 +24,18 @@ module BuildHelper
             |contents, build_input|
             contents.push(content_tag(:dt, build_input.name))
             contents.push(content_tag(:dd, 'missing on build'))
-            contents
         }
 
         input_list_contents = build_input_data['only_on_build'].values.inject(input_list_contents) {
             |contents, build_input|
             contents.push(content_tag(:dt, build_input.name))
             contents.push(render_value_for_model_or_build_input(build_input) + ' (missing on model)')
-            contents
         }
 
         input_list_contents = build_input_data['different'].values.inject(input_list_contents) {
             |contents, build_input|
             contents.push(content_tag(:dt, build_input.name))
             contents.push(render_value_for_model_or_build_input(build_input))
-            contents
         }
 
         content_tag(:dl, raw(input_list_contents.join));

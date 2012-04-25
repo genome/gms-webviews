@@ -3,27 +3,28 @@
 </div>
 
 <div class="span4 well">
-    <div class="page-header">
-        <h3>Model Attributes</h3>
-    </div>
-	<dl>
-		<dt>ID</td><dd><%= @genome_model.id %></dd>
-		<dt>User</dt><dd><%= @genome_model.user_name %></dd>
-		<dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
-		<dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
-		<dt>Subject</dt><dd><%= link_span @genome_model.subject_id, subject_path(@genome_model.subject_id) %></dd>
-        <dt>Last Complete Build</dt>
-            <dd><% if @last_complete_build %>
-                <ul>
-                    <li><%= link_span(@last_complete_build.build_id, build_path(@last_complete_build))  %></li>
-                    <li><%= link_span('data directory', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}", 'icon-folder-open icon-white')   %></li>
-                    <li><%= link_span('Summary Report', "http://gscweb.gsc.wustl.edu/#{@last_complete_build.data_directory}/reports/Sumamry/report.html", 'icon-file icon-white')  %></li>
-                </ul>
-                <% else %>
-                    none
-                <% end %>
-            </dd>
-	</dl>
+  <div class="page-header">
+      <h3>Model Attributes</h3>
+  </div>
+  <dl>
+    <dt>ID</td><dd><%= @genome_model.id %></dd>
+    <dt>User</dt><dd><%= @genome_model.user_name %></dd>
+    <dt>Build Requested</dt><dd><%= @genome_model.build_requested %></dd>
+    <dt>Creation Date</dt><dd><%= @genome_model.creation_date %></dd>
+    <dt>Subject</dt><dd><%= link_span @genome_model.subject_id, subject_path(@genome_model.subject_id) %></dd>
+    <dt>Last Complete Build</dt>
+    <dd>
+      <% if @last_complete_build %>
+        <ul>
+          <li><%= link_span(@last_complete_build.build_id, build_path(@last_complete_build))  %></li>
+          <li><%= link_span('data directory', "http://gscweb.gsc.wustl.edu#{@last_complete_build.data_directory}", 'icon-folder-open icon-white')   %></li>
+          <li><%= link_span('Summary Report', "http://gscweb.gsc.wustl.edu#{@last_complete_build.data_directory}/reports/Sumamry/report.html", 'icon-file icon-white')  %></li>
+        </ul>
+      <% else %>
+        none
+      <% end %>
+    </dd>
+  </dl>
 </div>
 
 <div class="span4 well">
@@ -52,7 +53,7 @@
   </dl>
 </div>
 
-<% if @genome_model.from_model_links.length != 0 and @genome_model.to_model_links.length != 0 %>
+<% if @genome_model.from_model_links.any? || @genome_model.to_model_links.any? %>
   <div class="span12 well">
     <div class="page-header">
       <h2>Model Links</h2>
@@ -64,25 +65,24 @@
       </thead>
 
       <tbody>
-        <% if @genome_model.from_model_links.length %>
-          <% @genome_model.from_model_links.each { |link| %>
+        <% if @genome_model.from_model_links.any? %>
+          <% @genome_model.from_model_links.each do |link| %>
             <tr>
               <td>Contains <%= link.role %></td>
               <td>Model <%= link_span(link.to_model_id, genome_model_path(link.to_model_id)) %> <%= link.to_model.name %></td>
             </tr>
-          <% } %>
+          <% end %>
         <% end %>
 
-        <% if @genome_model.to_model_links.length %>
-          <% @genome_model.to_model_links.each { |link| %>
+        <% if @genome_model.to_model_links.any? %>
+          <% @genome_model.to_model_links.each do |link| %>
             <tr>
               <td><%= link.role %> of</td>
               <td>Model <%= link_span(link.from_model_id, genome_model_path(link.from_model_id)) %> <%= link.to_model.name %></td>
             </tr>
-          <% } %>
+          <% end %>
         <% end %>
       </tbody>
-
     </table>
   </div>
 <% end %>
