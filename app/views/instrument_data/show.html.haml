@@ -1,0 +1,17 @@
+.span12.well
+  %h2 Instrument Data
+  %h3= @instrument_data.id
+
+.span8.well
+  .page-header
+    %h3 Attributes
+  %dl
+    = render partial: 'instrument_data_attribute/definition_list', collection: @attributes
+
+.span4.well
+  .page-header
+    -if @taxon
+      %h4 Taxon
+      %a{href: taxon_path(@taxon)}= @taxon.name
+    %h4 Library
+    %a{href: library_path(@library)}= @library.full_name

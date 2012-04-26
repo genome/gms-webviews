@@ -10,6 +10,7 @@ gem 'pg'
 gem 'less-rails-bootstrap'
 gem 'rsolr'
 gem 'will_paginate'
+gem 'haml'
 
 group :development do
     gem 'pry'
