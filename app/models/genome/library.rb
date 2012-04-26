@@ -9,6 +9,7 @@ class Genome::Library < ActiveRecord::Base
     #if there is a population group or individual record
     taxon = self.sample.taxon
     taxon = self.sample.subject.taxon unless taxon
+    taxon
   end
 
   class << self

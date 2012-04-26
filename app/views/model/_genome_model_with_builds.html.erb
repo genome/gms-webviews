@@ -10,9 +10,7 @@
   <div class="well">
     Inputs
     <ul>
-      <% genome_model_with_builds.model_inputs.each do |input| %>
-        <li><%= input.name %> - <%= link_span(input.value_id, build_path(input.value_id)) %></li>
-      <% end %>
+      <%= render partial: 'model_input/li', collection: genome_model_with_builds.model_inputs %>
     </ul>
     <div>
       <table class="table table-striped">
