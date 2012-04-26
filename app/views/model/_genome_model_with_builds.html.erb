@@ -12,17 +12,19 @@
     <ul>
       <%= render partial: 'model_input/li', collection: genome_model_with_builds.model_inputs %>
     </ul>
-    <div>
-      <table class="table table-striped">
-        <tr>
-          <th>build</th>
-          <th>status</th>
-          <th>scheduled</th>
-          <th>completed</th>
-          <th>data directory</th>
-        </tr>
-        <%= render partial: 'build/build_table_row', collection: genome_model_with_builds.builds %>
-      </table>
-    </div>
+    <% if genome_model_with_builds.builds.any? %>
+      <div>
+        <table class="table table-striped">
+          <tr>
+            <th>build</th>
+            <th>status</th>
+            <th>scheduled</th>
+            <th>completed</th>
+            <th>data directory</th>
+          </tr>
+          <%= render partial: 'build/build_table_row', collection: genome_model_with_builds.builds %>
+        </table>
+      </div>
+  <% end %>
   </div>
 </div>
