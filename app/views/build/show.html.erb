@@ -1,11 +1,10 @@
 
+<div class="page-header">
+  <h3><%= @build.model.name %></h3>
+  <h1><%= @build.build_id %> <small>build</small></h1>
+</div>
 <div class="well">
-    <h1>Build <%= @build.build_id %></h1>
-    <h3><%= @build.model.name %></h3>
-
-    <br/>
     <%= render partial: 'build/summary', locals: { build: @build } %>
-
 </div>
 
 <div class="span12">
@@ -31,7 +30,6 @@
     <div class="page-header">
         <h2>Workflow</h2>
     </div>
-    
     not in postgres yet.
 </div>
 
