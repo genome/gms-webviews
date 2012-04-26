@@ -7,7 +7,7 @@ class Genome::Build < ActiveRecord::Base
     has_one :master_event, class_name: :Event, conditions: ["event_type = 'genome model build'"]
 
     def display_label
-        return self.id + ' of ' + self.model.name
+      "#{self.id} of #{self.model.name}"
     end
 
 end

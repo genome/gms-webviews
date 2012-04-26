@@ -7,7 +7,6 @@ class Genome::InstrumentData < ActiveRecord::Base
   class << self
     def find_for_instrument_data_page(id)
       where(id: id ).includes( library: [:sample]).first
-
     end
   end
 end
