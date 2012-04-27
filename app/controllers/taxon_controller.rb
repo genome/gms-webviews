@@ -1,5 +1,5 @@
 class TaxonController < ApplicationController
   def show
-    @subject = Genome::Taxon.find(params[:id])
+    @subject = SubjectPresenter.new(params[:id], controller: :taxon)
   end
 end

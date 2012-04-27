@@ -1,6 +1,6 @@
 class ProcessingProfilePresenter
-  include PresenterWithModelPassthrough
-  include PresenterWithAttributes
+  include Mixins::PresenterWithModelPassthrough
+  include Mixins::PresenterWithAttributes
 
   def initialize(id)
     @processing_profile = Genome::ProcessingProfile.find(id, include: :processing_profile_params)
