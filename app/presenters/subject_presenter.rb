@@ -23,8 +23,29 @@ class SubjectPresenter
     end
   end
 
+  def library_name
+    library.full_name
+  end
+
+  def taxon_name
+    taxon.name
+  end
+
   def model_object
     @subject
+  end
+
+  def show_taxon_library_div?
+    library || taxon
+  end
+
+  def show_models_and_builds?
+    case @subject
+    when Genome::Taxon
+      false
+    else
+      true
+    end
   end
 
   private

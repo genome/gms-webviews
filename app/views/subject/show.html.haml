@@ -1,0 +1,20 @@
+.page-header
+  %h1
+    = @subject.name
+    %small sample
+
+.well.span6
+  = render partial: 'shared/attribute_list', locals: {presenter: @subject}
+
+- if @subject.show_taxon_library_div?
+  .well.span6
+    -if @subject.library
+      %h4 Library
+      = content_tag :span, link_to(@subject.library_name, library_path(@subject.library))
+    -if @subject.taxon
+      %h4 Taxon
+      = content_tag :span, link_to(@subject.taxon_name, taxon_path(@subject.taxon))
+
+- if @subject.show_models_and_builds?
+  .span12
+    = render partial: 'model/genome_model_with_builds', collection: @subject.models
