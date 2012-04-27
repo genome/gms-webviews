@@ -2,8 +2,8 @@ class InstrumentDataPresenter
   include Mixins::PresenterWithModelPassthrough
   include Mixins::PresenterWithAttributes
 
-  def initialize(id)
-    @instrument_data = Genome::InstrumentData.find_for_instrument_data_page(id)
+  def initialize(instrument_data)
+    @instrument_data = instrument_data
   end
 
   def library

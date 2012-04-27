@@ -1,6 +1,7 @@
 class TaxonController < ApplicationController
   def show
-    @subject = SubjectPresenter.new(params[:id], controller: :taxon)
+    subject = Genome::Subject.where(subject_id: params[:id]).with_attributes.first
+    @subject = SubjectPresenter.new(subject)
     render 'subject/show'
   end
 end

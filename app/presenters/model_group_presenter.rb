@@ -2,8 +2,8 @@ class ModelGroupPresenter
   include Mixins::PresenterWithAttributes
   include Mixins::PresenterWithModelPassthrough
 
-  def initialize(id)
-    @mg = Genome::ModelGroup.model_group_view(id)
+  def initialize(mg)
+    @mg = mg
   end
 
   private

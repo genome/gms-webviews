@@ -2,8 +2,8 @@ class BuildPresenter
   include Mixins::PresenterWithAttributes
   include Mixins::PresenterWithModelPassthrough
 
-  def initialize(id)
-    @build = Genome::Build.find(id, include:[:master_event, model: [:processing_profile]])
+  def initialize(build)
+    @build = build
   end
 
   def model
