@@ -1,36 +1,23 @@
-
 <div class="page-header">
-  <h3><%= @build.model.name %></h3>
+  <h3><%= @build.model_name %></h3>
   <h1><%= @build.build_id %> <small>build</small></h1>
 </div>
 <div class="well">
-    <%= render partial: 'build/summary', locals: { build: @build } %>
+  <%= render partial: 'shared/attribute_list', locals: { presenter: @build } %>
 </div>
 
 <div class="span12">
   <div class="page-header">
     <h2>Inputs</h2>
   </div>
-
-    <table class="table table-bordered">
-        <tbody>
-      <% @inputs.each do |i| %>
-        <tr>
-            <td><%= i.name %></td>
-            <td>
-                <%= render_value_for_model_or_build_input(i) %>
-            </td>
-        </tr>
-      <% end  %>
-        </tbody>
-    </table>
+<%= render partial: 'shared/attribute_list', locals: { presenter: @build.inputs } %>
 </div>
 
 <div class="span12">
-    <div class="page-header">
-        <h2>Workflow</h2>
-    </div>
-    not in postgres yet.
+  <div class="page-header">
+    <h2>Workflow</h2>
+  </div>
+  not in postgres yet.
 </div>
 
 
