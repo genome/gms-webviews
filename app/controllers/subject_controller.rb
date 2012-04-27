@@ -1,7 +1,6 @@
 class SubjectController < ApplicationController
 
   def show
-
     @subject = SubjectPresenter.new(params[:id])
     case @subject.model_object
     when Genome::Taxon
