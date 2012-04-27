@@ -3,5 +3,5 @@
 </div>
 
 <dl>
-    <%= render partial: 'processing_profile_param/processing_profile_param_table_row', collection: @processing_profile.processing_profile_params %>
+  <%= render partial: 'shared/attribute_list', locals: {presenter: @processing_profile} %>
 </dl>
