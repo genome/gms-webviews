@@ -27,7 +27,6 @@ class BuildPresenter
     @events ||= @build.events
   end
 
-
   private
   def attribute_pairs
     {
