@@ -26,7 +26,8 @@
 
   <div class="span10">
     <dl>
-      <dt>software</dt><dd>stuff</dd>
+      <dt>software</dt>
+      <dd><%= @build.software_revision %></dd>
 
       <dt>processing profile</dt>
       <dd>
@@ -34,9 +35,10 @@
       <%= @build.model.processing_profile.name %>
       </dd>
 
-      <dt>workflow</dt><dd>other</dd>
+      <dt>workflow</dt><dd>-</dd>
 
-      <dt>LSF job id</dt><dd>stuff</dd>
+      <dt>LSF job id</dt>
+      <dd><%= @build.master_event.lsf_job_id %></dd>
     </dl>
   </div>
 

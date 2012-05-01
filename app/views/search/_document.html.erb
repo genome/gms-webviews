@@ -1,6 +1,18 @@
 <div class="well">
   <%= content_tag :strong, "#{document["display_type"]}: "%><%= content_tag :h4, link_for_document(document) %>
   <% link_num = 1; while document["display_url#{link_num}"] %>
-    <%= link_to(content_tag(:span, document["display_label#{link_num}"], class: 'label'), document["display_url#{link_num}"]) if document["display_label#{link_num}"] != "" && document["display_url#{link_num}"] != "none" %>
-  <% link_num += 1; end %>
+
+    <%=
+        last_succeeded_build_id = document["last_succeeded_build_id_t"]
+        if link_num == 1 && last_succeeded_build_id
+            display_url = "/build/" + last_succeeded_build_id
+        else
+            display_url = document["display_url#{link_num}"]
+        end
+
+        if display_url != "" && display_url != "none"
+            link_to(content_tag(:span, document["display_label#{link_num}"], class: 'label'), display_url)
+        end
+    %>
+  <% link_num += 1; end # while  %>
 </div>
