@@ -1,0 +1,15 @@
+.page-header
+  %h1
+    = @library.full_name
+    %small library
+
+.span12.well
+  .page-header
+    %h4 Taxon
+    %a{href: taxon_path(@taxon)}= @taxon.name
+    %h4 Sample
+    %a{href: sample_path(@sample)}= @sample.name
+
+.span12.well
+  %dl
+    = render partial: 'model/model_with_builds', collection: @models

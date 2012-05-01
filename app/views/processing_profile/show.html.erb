@@ -1,7 +1,7 @@
-<div class="hero-unit">
-  <h2>Processing Profile</h2><%= @processing_profile.name %>
+<div class="page-header">
+  <h1><%= @processing_profile.name %> <small>processing profile</small></h1>
 </div>
 
 <dl>
-    <%= render partial: 'processing_profile_param/processing_profile_param_table_row', collection: @processing_profile.processing_profile_params %>
+  <%= render partial: 'shared/attribute_list', locals: {presenter: @processing_profile} %>
 </dl>

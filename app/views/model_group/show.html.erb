@@ -1,16 +1,9 @@
-<h1>Model Group: <%= @mg.name %></h1>
-<div>
-  <h2>Model Group Attributes:</h2>
-  <ul>
-    <li>ID: <%= @mg.id %></li>
-    <li>Name: <%= @mg.name %></li>
-    <li>User Name: <%= @mg.user_name %></li>
-    <li>Model Count: <%= @mg.models.count %></li>
-  </ul>
+<div class="page-header">
+  <h1><%= @mg.name %> <small>model group</small></h1>
 </div>
-
+<%= render partial: 'shared/attribute_list', locals: {presenter: @mg} %>
 <div>
-  <%= render partial: 'model/genome_model_with_builds', collection: @mg.models %>
+  <%= render partial: 'model/model_with_builds', collection: @mg.models %>
 </div>
 
 
