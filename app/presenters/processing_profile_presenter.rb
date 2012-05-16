@@ -13,16 +13,14 @@ class ProcessingProfilePresenter
 
   def attribute_pairs
     @pairs ||= @processing_profile.processing_profile_params.inject({}) do |attribute_list, param|
-      attribute_list[param.param_name] = param_value(param)
+      attribute_list[param.param_name] = ->(b) do
+        if param.param_name == 'reference_sequence_model_id'
+          link_span(param.param_value, model_path(param.param_value))
+        else
+            param.param_value
+        end
+      end
       attribute_list
-    end
-  end
-
-  def param_value(param)
-    if param.param_name == 'reference_sequence_model_id'
-      link_span(param.param_value, model_path(param.param_value))
-    else
-        param.param_value
     end
   end
 
