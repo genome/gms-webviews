@@ -1,23 +1,27 @@
 GenomeDemo::Application.routes.draw do
+  root :to => "search#search_results"
+  match 'search' => 'search#search_results'
 
-  resources :library
-  resources :subject
-  resources :model_group
-  resources :build
-  resources :processing_profile
-  resources :sample
-  resources :individual
-  resources :population_group
-  resources :model
-  resources :taxon
-  resources :build_input
-  resources :instrument_data
-  resources :user
+  resources :library, only: [:show]
+  resources :subject, only: [:show]
+  resources :build, only: [:show]
+  resources :processing_profile, only: [:show]
+  resources :sample, only: [:show]
+  resources :individual, only: [:show]
+  resources :population_group, only: [:show]
+  resources :taxon, only: [:show]
+  resources :build_input, only: [:show]
+  resources :instrument_data, only: [:show]
+  resources :user, only: [:show]
+  resources :model, only: [:show]
+
+  resources :model_group, only: [:show] do
+    get 'convergence'
+    get 'status' => 'model_group#show'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority
-  root :to => "search#search_results"
-  match 'search' => 'search#search_results'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
