@@ -13,7 +13,7 @@ class ProcessingProfilePresenter
 
   def attribute_pairs
     @pairs ||= @processing_profile.processing_profile_params.inject({}) do |attribute_list, param|
-      attribute_list[param.param_name] = ->(pp) {param_value(param)}
+      attribute_list[param.param_name] = param_value(param)
       attribute_list
     end
   end
