@@ -5,6 +5,7 @@ class BuildInputsPresenter
     @build_inputs = build_inputs
   end
 
+  private
   def attribute_pairs
     @attribute_pairs ||= @build_inputs.inject({}) do |attributes, attribute|
       attributes[attribute.name] = ->(b) { render_value_for_model_or_build_input(attribute) }

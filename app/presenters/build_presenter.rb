@@ -14,6 +14,10 @@ class BuildPresenter
     model.name
   end
 
+  def display_label
+    "#{@build.id} of #{@build.model.name}"
+  end
+
   def inputs
     unless @inputs
       inputs = @build.build_inputs
