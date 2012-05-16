@@ -1,0 +1,6 @@
+.page-header
+  %h1= @mg.name
+    %small model group
+=render partial: 'shared/attribute_list', locals: {presenter: @mg}
+%div
+  =render partial: 'model/model_with_builds', collection: @mg.models

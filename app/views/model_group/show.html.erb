@@ -1,9 +1,0 @@
-<div class="page-header">
-  <h1><%= @mg.name %> <small>model group</small></h1>
-</div>
-<%= render partial: 'shared/attribute_list', locals: {presenter: @mg} %>
-<div>
-  <%= render partial: 'model/model_with_builds', collection: @mg.models %>
-</div>
-
-
