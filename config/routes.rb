@@ -17,6 +17,7 @@ GenomeDemo::Application.routes.draw do
 
   resources :model_group, only: [:show] do
     get 'convergence'
+    get 'coverage'
     get 'status' => 'model_group#show'
   end
 
