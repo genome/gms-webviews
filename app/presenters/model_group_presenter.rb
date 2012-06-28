@@ -1,9 +1,9 @@
-class ModelGroupPresenter
+class ModelGroupPresenter < SimpleDelegator
   include Mixins::PresenterWithAttributes
-  include Mixins::PresenterWithModelPassthrough
 
   def initialize(mg)
     @mg = mg
+    super(mg)
   end
 
   private

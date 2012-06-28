@@ -1,9 +1,9 @@
-class InstrumentDataPresenter
-  include Mixins::PresenterWithModelPassthrough
+class InstrumentDataPresenter < SimpleDelegator
   include Mixins::PresenterWithAttributes
 
   def initialize(instrument_data)
     @instrument_data = instrument_data
+    super(instrument_data)
   end
 
   def library

@@ -1,6 +1,5 @@
-class BuildPresenter
+class BuildPresenter < SimpleDelegator
   include Mixins::PresenterWithAttributes
-  include Mixins::PresenterWithModelPassthrough
 
   def initialize(build)
     @build = build

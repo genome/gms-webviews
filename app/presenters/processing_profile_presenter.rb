@@ -1,9 +1,9 @@
-class ProcessingProfilePresenter
-  include Mixins::PresenterWithModelPassthrough
+class ProcessingProfilePresenter < SimpleDelegator
   include Mixins::PresenterWithAttributes
 
   def initialize(pp)
     @processing_profile = pp
+    super(pp)
   end
 
   private

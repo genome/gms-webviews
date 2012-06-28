@@ -1,9 +1,9 @@
-class SubjectPresenter
-  include Mixins::PresenterWithModelPassthrough
+class SubjectPresenter < SimpleDelegator
   include Mixins::PresenterWithAttributes
 
   def initialize(subject)
     @subject = subject
+    super(subject)
   end
 
   def taxon
