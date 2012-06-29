@@ -3,6 +3,7 @@ class BuildPresenter < SimpleDelegator
 
   def initialize(build)
     @build = build
+    super(build)
   end
 
   def model
