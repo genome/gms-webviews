@@ -34,4 +34,7 @@ GenomeDemo::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  #use the DummyShibboleth rack middleware so simulate the request headers
+  config.middleware.use DummyShibboleth
 end

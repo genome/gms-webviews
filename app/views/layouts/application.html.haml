@@ -18,7 +18,7 @@
             %input{type:"text", name: "q", class: "search-query span2", placeholder: "Search"}
           %p{class: "navbar-text"}
             Logged in as 
-            %a{href: "#"}username
+            %a{href: "#"}=@current_user.username
     .container-fluid
       - flash.each do |key, val|
         = content_tag :div, (content_tag :h3, val), class: "alert alert-#{key}"
