@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,7 @@ gem 'less-rails-bootstrap'
 gem 'rsolr'
 gem 'will_paginate'
 gem 'haml'
+gem 'therubyracer'
 
 group :development do
     gem 'pry'
