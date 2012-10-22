@@ -1,4 +1,8 @@
-%dl
-  - presenter.each_attribute(self) do |name, value|
-    %dt= name
-    %dd= value
+%table{:class=>'table table-bordered table-striped'}
+	%tr
+		%th Attribute
+		%th Value
+	- presenter.each_attribute(self) do |name, value|
+		%tr
+			%td= name
+			%td= value
