@@ -7,7 +7,7 @@ class Genome::Build < ActiveRecord::Base
     has_one  :master_event, class_name: :Event, conditions: ["event_type = 'genome model build'"]
 
     def workflow_instance
-      Genome::WorkflowInstance.where('name like :build_id', build_id: "#{self.id}%").limit(1)
+      Genome::WorkflowInstance.where('name like :build_id', build_id: "#{self.id}%").first
     end
 
 end
