@@ -12,6 +12,7 @@ gem 'rsolr'
 gem 'will_paginate'
 gem 'haml'
 gem 'therubyracer'
+gem 'nokogiri'
 
 group :development do
     gem 'pry'
