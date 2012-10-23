@@ -6,7 +6,7 @@ class DummyShibboleth
 
   #TODO: a test user would be preferable to using me...
   def call( env )
-    env['HTTP_REMOTE_USER'] ||= 'acoffman@genome.wustl.edu'
+    env['HTTP_REMOTE_USER'] ||= 'acoffman'
     @app.call( env )
   end
 

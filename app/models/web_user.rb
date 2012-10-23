@@ -10,6 +10,6 @@ class WebUser
   private
     def initialize( shib_username )
       @shib_username = shib_username
-      @genome_user = Genome::User.where( email: @shib_username ).first!
+      @genome_user = Genome::User.where( username: @shib_username ).first!
     end
 end
