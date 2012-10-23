@@ -41,7 +41,7 @@ class BuildPresenter < SimpleDelegator
       "files"              => ->(b) { link_span('data', data_dir(b)) + link_span('errors', log_dir(b,'err')) + link_span('output', log_dir(b,'out')) },
       "software"           => 'stuff',
       "processing_profile" => ->(b) { link_span(b.model.processing_profile.name, processing_profile_path(b.model.processing_profile))},
-      "workflow"           => 'something else',
+      "workflow"           => "#{@build.workflow_instances.first.name} (#{@build.workflow_instances.first.id})",
       "LSF job id"         => 'stuff'
     }
   end
