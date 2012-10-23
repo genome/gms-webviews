@@ -14,4 +14,38 @@
 .span12
   .page-header
     %h2 Workflow
-  %p not in postgres yet.
+  %ul.breadcrumb
+    %li
+      %a{:href=>'#'}
+        =@build.workflow_instance.name
+      %span{:class=>'divider'}
+        \/
+      Detect Variants
+  %table{:class=>'table table-bordered table-condensed table-striped'}
+    %tr
+      %th Name
+      %th Status
+      %th LSF id
+      %th Started At
+      %th Finished At
+      %th Elapsed
+      %th Stdout
+      %th Stderr
+    -@build.workflow_instance.plan.operations.each do |op|
+      %tr
+        %td 
+          =op.name
+        %td 
+          =status_label_for_workflow_operation(op)
+        %td
+          =op.dispatch_id
+        %td 
+          =op.start_time
+        %td 
+          =op.end_time
+        %td
+          =distance_of_time_in_words(op.elapsed_time)
+        %td
+          =link_to 'Output', "http://gscweb.gsc.wustl.edu/#{op.stdout}"
+        %td
+          =link_to 'Errors', "http://gscweb.gsc.wustl.edu/#{op.stderr}"

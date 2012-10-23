@@ -2,22 +2,40 @@ module BuildHelper
   # returns a string containing a span tag to represent the success/fail
   # status of a build
   def status_label_for_build(build)
-    classes = ['label']
+    classes = []
     if (build.master_event)
       status = build.master_event.event_status
-      case status
-      when 'Succeeded'
-        classes.push('label-success')
-      when 'Failed'
-        classes.push('label-important')
-      when 'Running'
-        classes.push('label-info');
-      end
+      classes.push = label_class_for_status(status)
     else
       status = 'No events'
     end
     content_tag(:span, status, :class => classes)
   end
+  
+  def status_label_for_workflow_operation(op)
+    classes = []
+    status = op.status.capitalize
+    classes.push label_class_for_status(status)
+    content_tag(:span, status, :class => classes)
+  end
+  
+  def label_class_for_status(status)
+    classes = ['label']
+    case status
+    when 'Succeeded'
+      classes.push('label-success')
+    when 'Done'
+      classes.push('label-success')
+    when 'Failed'
+      classes.push('label-important')
+    when 'Running'
+      classes.push('label-info');
+    when 'Crashed'
+      classes.push('label-important');
+      
+    end
+  end
+    
 
   def render_build_inputs(build_input_data)
     input_list_contents = build_input_data['only_on_model'].values.inject([]) {
