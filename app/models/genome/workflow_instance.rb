@@ -7,4 +7,6 @@ class Genome::WorkflowInstance < ActiveRecord::Base
   
   belongs_to :plan, :class_name=>'Genome::WorkflowPlan', :foreign_key => :workflow_plan_id
   has_one :execution, :class_name=>'Genome::WorkflowInstanceExecution', :foreign_key => :workflow_instance_id
+  
+  delegate :status, :start_time, :end_time, :dispatch_id, :stdout, :stderr,  to: :execution
 end
