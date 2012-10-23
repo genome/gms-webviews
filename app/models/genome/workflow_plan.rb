@@ -3,15 +3,41 @@ class Genome::WorkflowPlan < ActiveRecord::Base
   self.primary_key = 'workflow_plan_id'
   
   def operations
-    parsed = Nokogiri(self.xml)
-
+    parsed_plan = Nokogiri(self.xml)
+    workflow_name = parsed_plan.xpath("/workflow").attr("name").to_s
+    if workflow_name =~ /all stages$/
+      return legacy_staged_operations(parsed_plan)
+    else
+      return workflow_only_operations(parsed_plan)
+    end  
+  end
+  
+  
+  private
+  
+  
+  def legacy_staged_operations(parsed_plan)
     op_names = []
-    
-    parsed.xpath("/operation").each do |op|
-      #puts op.attr("name")
-      op_names.push op.attr("name") unless op.attr("name") == "merge results"
+    operations = parsed_plan.xpath("//operation/operation[@name != 'merge results']")
+    operations.each do |op|
+      op_names.push op.attr("name")
+    end
+    by_names = Genome::WorkflowInstance.where(name: op_names).inject({}) {|h,i| h.tap{|h| h[i.name] = i}}
+    return op_names.collect {|name| by_names[name]} 
+  end
+  
+  def workflow_only_operations(parsed_plan)
+    workflow_name = parsed_plan.xpath("/workflow").attr("name").to_s
+    parent_instance = Genome::WorkflowInstance.find_by_name(workflow_name)
+
+    op_names = []    
+    operations = parsed_plan.xpath("//operation[@name != 'merge results']")
+      
+    operations.each do |op|
+      op_names.push op.attr("name")
     end
     
-    Genome::WorkflowInstance.where(name: op_names)
+    by_names = Genome::WorkflowInstance.where(name: op_names, parent_instance_id:parent_instance.id).inject({}) {|h,i| h.tap{|h| h[i.name] = i}}
+    return op_names.collect {|name| by_names[name]}    
   end
 end
