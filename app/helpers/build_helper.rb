@@ -5,20 +5,20 @@ module BuildHelper
     classes = []
     if (build.master_event)
       status = build.master_event.event_status
-      classes.push = label_class_for_status(status)
+      classes.push  label_class_for_status(status)
     else
       status = 'No events'
     end
     content_tag(:span, status, :class => classes)
   end
-  
+
   def status_label_for_workflow_operation(op)
     classes = []
     status = op.status.capitalize
     classes.push label_class_for_status(status)
     content_tag(:span, status, :class => classes)
   end
-  
+
   def label_class_for_status(status)
     classes = ['label']
     case status
@@ -32,10 +32,10 @@ module BuildHelper
       classes.push('label-info');
     when 'Crashed'
       classes.push('label-important');
-      
+
     end
   end
-    
+
 
   def render_build_inputs(build_input_data)
     input_list_contents = build_input_data['only_on_model'].values.inject([]) {

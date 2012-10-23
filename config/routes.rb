@@ -14,6 +14,7 @@ GenomeDemo::Application.routes.draw do
   resources :instrument_data, only: [:show]
   resources :user, only: [:show]
   resources :model, only: [:show]
+  resources :workflow, only: [:show]
 
   resources :model_group, only: [:show] do
     get 'convergence'
