@@ -51,7 +51,7 @@ class Genome::WorkflowPlan < ActiveRecord::Base
 
     def parse_operations_for_plan( parsed_plan )
       workflow_node = parsed_plan.xpath("/workflow")
-      if workflow_node && workflow_node.attr("name").to_s =~ /all stages$/
+      if workflow_node.any? && workflow_node.attr("name").to_s =~ /all stages$/
         return legacy_staged_operations(parsed_plan)
       else
         return workflow_only_operations(parsed_plan)

@@ -1,4 +1,6 @@
-<%= content_tag :li,
-  link_to("#{facet[0]} (#{facet[1]})" ,"/search?q=#{query}&fq=#{facet[0]}"),
-  class: facet[0] == @facet ? "active" : ""
+<%= content_tag :li do
+    link_to("/search?q=#{query}&fq=#{facet[0]}", class: facet[0] == @facet ? "active" : "") do 
+      "<i class='#{icon_for_facet(facet[0])}'></i>#{facet[0]} (#{facet[1]})".html_safe
+    end
+  end
 %>
