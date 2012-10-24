@@ -4,7 +4,7 @@ class Genome::WorkflowPlan < ActiveRecord::Base
 
   def operations
     parsed_plan = Nokogiri::XML( self.xml )
-    
+
     parse_operations_for_plan( parsed_plan )
   end
 
@@ -32,7 +32,7 @@ class Genome::WorkflowPlan < ActiveRecord::Base
       operations.each do |op|
         op_names.push op.attr("name")
       end
-      
+
       by_names = Genome::WorkflowInstance.tree_for(parent_instance  ).inject(Hash.new {|h,k| h[k] = []}) do |h, i|
         h.tap do |h|
           h[i.name].concat [i]
@@ -40,7 +40,7 @@ class Genome::WorkflowPlan < ActiveRecord::Base
       end
 
       out = []
-      
+
       op_names.each do |name|
         out.concat by_names[name]
         out.concat by_names[name].flat_map {|op| op.peers.all}
