@@ -1,6 +1,7 @@
 class SampleController < ApplicationController
   def show
-    @subject = SubjectPresenter.new(params[:id], controller: :taxon)
+    subject = Genome::Subject.find(params[:id])
+    @subject = SubjectPresenter.new(subject)
     render 'subject/show'
   end
 end
