@@ -20,6 +20,9 @@
       %tr
         %td 
           =op.name
+          -if op.child_instances.any?
+            =op.child_instances.first.id            
+            =link_to 'ok', workflow_path(op.child_instances.first)
         %td 
           =status_label_for_workflow_operation(op)
         %td
