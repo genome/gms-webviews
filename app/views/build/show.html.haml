@@ -1,9 +1,9 @@
 .page-header
-  %h3= @build.model_name
+  %h3= @build.build_id
   %h1
-    =@build.build_id
+    =@build.model_name
     %small build
-.well
+.span12
   =render partial: 'shared/attribute_list', locals: { presenter: @build }
 
 .span12
