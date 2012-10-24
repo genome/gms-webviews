@@ -17,6 +17,27 @@ module SearchHelper
           end
     link_to(document["display_title"], url)
   end
+  
+  def icon_for_facet(facet)
+    if facet =~ /^model /
+      return "icon-th-large"
+    end
+    
+    icon = case facet
+      when 'mail'
+        'icon-envelope'
+      when 'project'
+        "icon-folder-close"
+      when 'wiki-page'
+        'icon-file'
+      when 'processing_profile'
+        'icon-filter'
+      when 'modelgroup'
+        'icon-list'
+      else
+        'icon-asterisk'
+      end
+  end
 end
 
 
