@@ -20,11 +20,13 @@
         %th Stderr
       -workflow_instance.plan.operations.each do |op|
         %tr
-          %td 
-            =op.name
+          %td
             -if op.child_instances.any?
-              =op.child_instances.first.id
-              =link_to 'ok', workflow_path(op.child_instances.first), class: 'workflow_link'
+              %a.workflow_link{href: workflow_path(op.child_instances.first)}
+                =op.name
+                %i.icon-chevron-right
+            -else
+              =op.name
           %td 
             =status_label_for_workflow_operation(op)
           %td
