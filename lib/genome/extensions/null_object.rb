@@ -2,6 +2,8 @@ module Genome
   module Extensions
 
     class NullObject
+      include Singleton
+
       def method_missing(name, *args)
         self
       end
@@ -20,7 +22,7 @@ module Genome
     end
 
     def Maybe(obj)
-      obj.nil? ? NullObject.new : obj
+      obj.nil? ? NullObject.instance : obj
     end
 
   end
