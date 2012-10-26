@@ -14,6 +14,10 @@ class BuildPresenter < SimpleDelegator
     model.name
   end
 
+  def workflow_instance
+    Maybe(@build.workflow_instance)
+  end
+
   def display_label
     "#{@build.id} of #{@build.model.name}"
   end

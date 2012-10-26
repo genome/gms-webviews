@@ -9,6 +9,14 @@ module Genome
       def nil?
         true
       end
+
+      def inspect
+        ''
+      end
+
+      def to_s
+        ''
+      end
     end
 
     def Maybe(obj)
