@@ -4,7 +4,7 @@ $ ->
       breadcrumbs = $('ul.breadcrumb li')
       if $(this).hasClass('workflow_breadcrumb_link')
           index = $(this).index(breadcrumbs)
-          document.save_breadcrumbs = breadcrumbs.slice(1,index+1)
+          document.save_breadcrumbs = breadcrumbs.slice( 1, index+1 )
       else
         document.save_breadcrumbs = breadcrumbs
       $('#workflow_content').hide()

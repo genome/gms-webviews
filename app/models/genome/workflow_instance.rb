@@ -10,11 +10,11 @@ class Genome::WorkflowInstance < ActiveRecord::Base
   belongs_to :parent, :class_name=>'Genome::WorkflowInstance'
 
   delegate :status, :start_time, :end_time, :dispatch_id, :stdout, :stderr,  to: :execution
-    
+
   def elapsed_time
     end_time - start_time
   end
-  
+
   def self.tree_for(instance)
       where("#{table_name}.#{primary_key} IN (#{tree_sql_for(instance)})").order("#{table_name}.#{primary_key}")
   end
@@ -34,4 +34,5 @@ class Genome::WorkflowInstance < ActiveRecord::Base
       SELECT #{primary_key} FROM search_tree ORDER BY path
     SQL
   end
+
 end
