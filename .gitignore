@@ -16,3 +16,6 @@
 
 # ignore developer-placed rvmrc files.
 .rvmrc
+
+#ignore vim swapfiles
+*.swp
