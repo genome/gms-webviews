@@ -3,7 +3,7 @@ GenomeDemo::Application.routes.draw do
   match 'search' => 'search#search_results'
 
   resources :library, only: [:show]
-  resources :subject, only: [:show]
+  resources :subject, only: [:show, :index]
   resources :build, only: [:show]
   resources :processing_profile, only: [:show, :index]
   resources :sample, only: [:show]
