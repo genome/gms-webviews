@@ -13,7 +13,7 @@ GenomeDemo::Application.routes.draw do
   resources :build_input, only: [:show]
   resources :instrument_data, only: [:show]
   resources :user, only: [:show]
-  resources :model, only: [:show]
+  resources :model, only: [:show, :index]
   resources :workflow, only: [:show]
 
   resources :model_group, only: [:show] do
