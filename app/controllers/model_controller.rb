@@ -1,4 +1,12 @@
 class ModelController < ApplicationController
+  
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: ModelsDatatable.new(view_context) }
+    end
+  end
+
   def show
     @genome_model = Genome::Model.find_for_model_page(params[:id]) || not_found("Model #{params[:id]} doesn't exist")
     @builds = @genome_model.builds.sorted_by_date_scheduled
