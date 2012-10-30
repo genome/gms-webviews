@@ -4,14 +4,15 @@ GMS Webviews
 These are very rudimentary web views for most of the objects in our system. You can set it up by following the instructions below.
 
 ```bash
-sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential apache2 libopenssl-ruby1.9.1 libssl-dev zlib1g-dev libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev postgresql postgresql-contrib libpq-dev libxslt-dev libxml2-dev libapache2-mod-passenger
+sudo apt-get update
+
+sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential apache2 libopenssl-ruby1.9.1 libssl-dev zlib1g-dev libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev postgresql postgresql-contrib libpq-dev libxslt-dev libxml2-dev
 
 sudo gem install passenger --no-ri --no-rdoc --version='3.0.15' --install-dir=var/lib/gems/1.9.1
 sudo gem install bundler --install-dir=var/lib/gems/1.9.1
 sudo GEM_HOME=var/lib/gems/1.9.1/ var/lib/gems/1.9.1/bin/passenger-install-apache2-module --auto
 
 sudo bash -c "echo 'LoadModule passenger_module /var/www/gms-webviews/var/lib/gems/1.9.1/gems/passenger-3.0.15/ext/apache2/mod_passenger.so 
-    #PassengerRoot /var/lib/gems/1.9.1/gems/passenger-3.0.15
     PassengerRoot /var/www/gms-webviews/var/lib/gems/1.9.1/gems/passenger-3.0.15
     PassengerRuby /usr/bin/ruby1.9.1' >| /etc/apache2/conf.d/passenger"
 
