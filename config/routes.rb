@@ -11,7 +11,7 @@ GenomeDemo::Application.routes.draw do
   resources :population_group, only: [:show]
   resources :taxon, only: [:show]
   resources :build_input, only: [:show]
-  resources :instrument_data, only: [:show]
+  resources :instrument_data, only: [:show, :index]
   resources :user, only: [:show]
   resources :model, only: [:show, :index]
   resources :workflow, only: [:show]
