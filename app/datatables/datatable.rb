@@ -22,10 +22,10 @@ class Datatable
   end
   
   def fetch_objects
-    objects = model_class_object.order("#{sort_column} #{sort_direction}").includes(:processing_profile)
+    objects = model_class_object.order("#{sort_column} #{sort_direction}")
     objects = objects.page(page).per_page(per_page)
     if params[:sSearch].present?
-      objects = objects.where("name like :search", search: "%#{params[:sSearch]}%")
+      objects = objects.where("lower(name) like lower(:search)", search: "%#{params[:sSearch]}%")
     end
     
     objects
