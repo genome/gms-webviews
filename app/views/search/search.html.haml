@@ -1,7 +1,14 @@
 .row
 
-  .span3.well
-    project stuff here, soon.
+  .span3.well.sidebar-nav
+    %ul.nav.nav-list
+      %li.nav-header Browse Data
+      %li
+        %a{href: model_index_path}
+          Models
+        %a{href: processing_profile_index_path}
+          Processing Profiles
+          
 
   .span9
     %form.well.form-search{:action=>'/search'}
