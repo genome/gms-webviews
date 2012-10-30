@@ -9,8 +9,8 @@ sudo apt-get update
 sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential apache2 libopenssl-ruby1.9.1 libssl-dev zlib1g-dev libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev postgresql postgresql-contrib libpq-dev libxslt-dev libxml2-dev
 
 sudo gem install passenger --no-ri --no-rdoc --version='3.0.15' --install-dir=/var/lib/gems/1.9.1
-sudo gem install bundler --install-dir=/var/lib/gems/1.9.1
-sudo passenger-install-apache2-module --auto
+sudo gem install bundler --no-ri --no-rdoc --install-dir=/var/lib/gems/1.9.1
+sudo GEM_HOME=/var/lib/gems/1.9.1 /var/lib/gems/1.9.1/bin/passenger-install-apache2-module --auto
 
 sudo bash -c "echo 'LoadModule passenger_module /var/lib/gems/1.9.1/gems/passenger-3.0.15/ext/apache2/mod_passenger.so 
     PassengerRoot /var/lib/gems/1.9.1/gems/passenger-3.0.15
@@ -19,7 +19,6 @@ sudo bash -c "echo 'LoadModule passenger_module /var/lib/gems/1.9.1/gems/passeng
 cd /var/www
 sudo git clone git://github.com/genome/gms-webviews.git
 sudo chown -R www-data /var/www/gms-webviews/
-sudo /usr/bin/gem1.9.1 install bundler --no-ri --no-rdoc
 cd /var/www/gms-webviews
 sudo bundle install
 sudo -u www-data mkdir /var/www/gms-webviews/tmp
