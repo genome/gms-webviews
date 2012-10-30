@@ -36,9 +36,11 @@ echo '<VirtualHost *:80>
    </Directory>
    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/json
    AddOutputFilterByType DEFLATE image/jpeg, image/png, image/gif
-</VirtualHost>' > /etc/apache2/sites-available/gms-webviews.conf
+</VirtualHost>' > /tmp/gms-webviews.conf
 
-ln -s  /etc/apache2/sites-available/gms-webviews.conf  /etc/apache2/sites-enabled/gms-webviews.conf
+sudo cp /tmp/gms-webviews.conf /etc/apache2/sites-available/gms-webviews.conf
+
+sudo ln -s  /etc/apache2/sites-available/gms-webviews.conf  /etc/apache2/sites-enabled/gms-webviews.conf
 
 sudo /etc/init.d/apache2 restart
 ```
