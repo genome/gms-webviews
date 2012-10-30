@@ -6,7 +6,7 @@ GenomeDemo::Application.routes.draw do
   resources :subject, only: [:show, :index]
   resources :build, only: [:show]
   resources :processing_profile, only: [:show, :index]
-  resources :sample, only: [:show]
+  resources :sample, only: [:show, :index]
   resources :individual, only: [:show]
   resources :population_group, only: [:show]
   resources :taxon, only: [:show]
