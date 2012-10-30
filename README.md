@@ -8,6 +8,19 @@ sudo apt-get update
 
 sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential apache2 libopenssl-ruby1.9.1 libssl-dev zlib1g-dev libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev postgresql postgresql-contrib libpq-dev libxslt-dev libxml2-dev
 
+sudo -u postgres /usr/bin/createuser -A -D -R -E genome
+sudo -u postgres /usr/bin/createdb -E UTF-8 -T template0 -O genome genome
+sudo -u postgres /usr/bin/psql postgres -tAc "ALTER USER \"genome\" WITH PASSWORD 'changeme'"
+sudo -u postgres /usr/bin/psql -c "GRANT ALL PRIVILEGES ON database genome TO \"genome\";"
+
+echo 'local   all         postgres                          ident
+local   all         all                               password
+host    all         all         127.0.0.1/32          password' >| /tmp/pg_hba.conf
+
+sudo mv /tmp/pg_hba.conf /etc/postgresql/9.1/main/pg_hba.conf
+sudo chown postgres  /etc/postgresql/9.1/main/pg_hba.conf
+sudo /etc/init.d/postgresql restart
+
 sudo gem install passenger --no-ri --no-rdoc --version='3.0.15' --install-dir=/var/lib/gems/1.9.1
 sudo gem install bundler --no-ri --no-rdoc --install-dir=/var/lib/gems/1.9.1
 sudo GEM_HOME=/var/lib/gems/1.9.1 /var/lib/gems/1.9.1/bin/passenger-install-apache2-module --auto
@@ -49,3 +62,6 @@ You will need to modify the 'production' section of `/var/www/gms-webviews/confi
 You will probably also need to modify the `ServerName` and `ServerAlias` attributes of the virtual host directive in `/etc/apache2/sites-available/gms-webviews.conf` to match your environment.
 
 You can restart the application at any time (such as after changing those config values, or pulling an update from git) by touching the file located at `/var/www/gms-webviews/tmp/restart.txt`
+
+
+
