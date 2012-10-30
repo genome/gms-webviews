@@ -10,9 +10,10 @@ sudo gem install passenger --no-ri --no-rdoc --version='3.0.15' --install-dir=va
 sudo gem install bundler --install-dir=var/lib/gems/1.9.1
 sudo GEM_HOME=var/lib/gems/1.9.1/ var/lib/gems/1.9.1/bin/passenger-install-apache2-module --auto
 
-sudo bash -c "echo 'LoadModule passenger_module /usr/lib/apache2/modules/mod_passenger.so
-   PassengerRoot /var/lib/gems/1.9.1/gems/passenger-3.0.15
-   PassengerRuby /usr/bin/ruby1.9.1' > /etc/apache2/conf.d/passenger"
+sudo bash -c "echo 'LoadModule passenger_module /var/www/gms-webviews/var/lib/gems/1.9.1/gems/passenger-3.0.15/ext/apache2/mod_passenger.so 
+    #PassengerRoot /var/lib/gems/1.9.1/gems/passenger-3.0.15
+    PassengerRoot /var/www/gms-webviews/var/lib/gems/1.9.1/gems/passenger-3.0.15
+    PassengerRuby /usr/bin/ruby1.9.1' >| /etc/apache2/conf.d/passenger"
 
 cd /var/www 
 git clone git://github.com/genome/gms-webviews.git
