@@ -36,7 +36,8 @@
           %td 
             =op.end_time
           %td
-            =distance_of_time_in_words(op.elapsed_time)
+            -if op.elapsed_time
+              =distance_of_time_in_words(op.elapsed_time)
           %td
             =link_to 'Output', "http://gscweb.gsc.wustl.edu/#{op.stdout}"
           %td

@@ -12,7 +12,9 @@ class Genome::WorkflowInstance < ActiveRecord::Base
   delegate :status, :start_time, :end_time, :dispatch_id, :stdout, :stderr,  to: :execution
 
   def elapsed_time
-    end_time - start_time
+    if start_time != nil
+        (end_time != nil ? end_time : Time.zone.now) - start_time
+    end
   end
 
   def self.tree_for(instance)

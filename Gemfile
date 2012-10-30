@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 
 #gem 'sqlite3'
 gem 'pg'
-gem 'less-rails-bootstrap'
+gem 'twitter-bootstrap-rails'
 gem 'rsolr'
 gem 'will_paginate'
 gem 'haml'
