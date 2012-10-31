@@ -1,6 +1,5 @@
 class Genome::ModelInput < ActiveRecord::Base
-
-  self.table_name = "model_input"
+  self.table_name = 'model.model_input'
   default_scope include: :build
   belongs_to :model
   has_one :build, primary_key: 'value_id', foreign_key: "build_id"

@@ -1,5 +1,5 @@
 class Genome::Build < ActiveRecord::Base
-    self.table_name = "build"
+    self.table_name = 'model.build'
     scope    :sorted_by_date_scheduled, includes(:master_event).joins(:master_event).order('date_scheduled')
     has_many :build_inputs, foreign_key: :build_id
     has_many :events, foreign_key: :build_id

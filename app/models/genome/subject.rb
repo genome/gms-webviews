@@ -1,5 +1,5 @@
 class Genome::Subject < ActiveRecord::Base
-  self.table_name = "subject"
+  self.table_name = 'subject.subject'
   self.inheritance_column = "subclass_name"
   self.primary_key = "subject_id"
 

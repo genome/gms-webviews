@@ -1,6 +1,6 @@
 class Genome::BuildInput < ActiveRecord::Base
 
-    self.table_name = "build_input"
+    self.table_name = 'model.build_input'
     belongs_to :build
 
     def get_input_value_internal

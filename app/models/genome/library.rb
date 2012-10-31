@@ -1,5 +1,5 @@
 class Genome::Library < ActiveRecord::Base
-  self.table_name = 'fragment_library'
+  self.table_name = 'instrument.fragment_library'
   self.primary_key = 'library_id'
 
   belongs_to :sample, class_name: "Subject", foreign_key: "sample_id"

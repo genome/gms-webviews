@@ -1,5 +1,5 @@
 class Genome::Model < ActiveRecord::Base
-  self.table_name = "model"
+  self.table_name = 'model.model'
   self.primary_key = 'genome_model_id'
   has_and_belongs_to_many :model_groups, foreign_key: 'model_id', join_table: 'model_group_bridge'
   has_many :builds, foreign_key: 'model_id'
