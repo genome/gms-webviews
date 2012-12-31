@@ -45,4 +45,12 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
+  
+  desc "Shuffle database config file"
+  task :db_relink, :roles => :app do
+    run "rm #{release_path}/config/database.yml"
+    run "ln -nfs /home/passenger/database.yml #{release_path}/config/database.yml"
+  end
 end
+
+after 'deploy:update_code', 'deploy:db_relink'
