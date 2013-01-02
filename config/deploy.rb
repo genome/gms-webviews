@@ -48,7 +48,6 @@ namespace :deploy do
   
   desc "Shuffle database config file"
   task :db_relink, :roles => :app do
-    run "rm #{release_path}/config/database.yml"
     run "ln -nfs /home/passenger/database.yml #{release_path}/config/database.yml"
   end
 end
