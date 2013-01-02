@@ -5,7 +5,7 @@ class ModelGroupPresenter < SimpleDelegator
     @mg = mg
     super(mg)
   end
-
+  
   private
   def attribute_pairs
     {
@@ -19,5 +19,6 @@ class ModelGroupPresenter < SimpleDelegator
   def model_object
     @mg
   end
+  
 
 end

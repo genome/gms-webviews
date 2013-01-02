@@ -3,7 +3,7 @@ class Genome::ModelGroup < ActiveRecord::Base
   has_and_belongs_to_many :models, association_foreign_key: 'model_id', join_table: 'model_group_bridge'
 
   def self.model_group_view(id)
-    where(id: id).includes(:models => [:processing_profile, :processing_profile_params, :subject, {:builds => [:master_event]}, :model_inputs]).first
+    where(id: id).first
   end
 
 end

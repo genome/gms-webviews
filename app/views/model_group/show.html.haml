@@ -4,4 +4,6 @@
     %small model group
 =render partial: 'shared/attribute_list', locals: {presenter: @mg}
 %div
-  =render partial: 'model/model_with_builds', collection: @mg.models
+  =render partial: 'model/model_with_builds', collection: @mg.models.page(params[:page])
+  %div.pagination
+    =paginate @mg.models.page(params[:page])
