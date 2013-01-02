@@ -53,3 +53,5 @@ gem 'kaminari'
 
 gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
+gem 'libv8'
+gem 'less-rails'
