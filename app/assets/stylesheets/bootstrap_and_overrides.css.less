@@ -30,3 +30,26 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+@tgiGreen: #8dc63f;
+@navbarText: #fff;
+@navbarBrandColor: #fff;
+@navbarLinkColor: #fff;
+@navbarBackgroundHighlight: #787878;
+
+.navbar {
+  .navbar-inner {
+    box-shadow: none;
+    border-bottom: 4px solid @tgiGreen;
+    background-color: #333328;
+    background-image: -moz-linear-gradient(top, #292920, #424234);
+    background-image: -ms-linear-gradient(top, #292920, #424234);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#292920), to(#424234));
+    background-image: -webkit-linear-gradient(top, #292920, #424234);
+    background-image: -o-linear-gradient(top, #292920, #424234);
+    background-image: linear-gradient(top, #292920, #424234);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292920', endColorstr='#424234', GradientType=0);
+  }
+}
+
