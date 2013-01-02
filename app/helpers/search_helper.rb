@@ -12,6 +12,8 @@ module SearchHelper
             ""
           when "imported_instrument_data"
             instrument_data_path(document["object_id"])
+          when "project"
+            ""
           else
              method(document["type"].split("-").first.strip + "_path").call(document["object_id"])
           end
