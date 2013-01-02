@@ -39,7 +39,7 @@ class BuildPresenter < SimpleDelegator
   def attribute_pairs
     {
       "status"             => @build.master_event.event_status,
-      "user"               => @build.model.user_name,
+      "user"               => @build.user_name,
       "model"              => ->(b) { link_span(b.model_id, model_path(b.model)) },
       "subject"            => ->(b) { link_span(b.model.subject_id, subject_path(b.model.subject_id)) },
       "files"              => ->(b) { link_span('data', data_dir(b)) + link_span('errors', log_dir(b,'err')) + link_span('output', log_dir(b,'out')) },
