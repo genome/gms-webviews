@@ -12,7 +12,7 @@
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
+        .container
           %a{class: "brand", href: "/search"}
             =image_tag "gc_logo_white_shadow.png"
             Genome Modeling System 
@@ -21,10 +21,10 @@
           %p{class: "navbar-text"}
             Logged in as 
             %a{href: "#"}=@current_user.username
-    .container-fluid
+    .container
       - flash.each do |key, val|
         = content_tag :div, (content_tag :h3, val), class: "alert alert-#{key}"
-      .row-fluid
+      .row
         .span12
           =yield
 
