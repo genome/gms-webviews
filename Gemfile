@@ -18,7 +18,7 @@ group :development do
     gem 'pry'
     gem 'pry-remote'
     gem 'pry-nav'
-    gem 'rack-mini-profiler'
+    #gem 'rack-mini-profiler'
 end
 
 #Gems used only for assets and not required
