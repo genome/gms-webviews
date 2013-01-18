@@ -22,3 +22,6 @@
 
 .sass-cache
 config/database.yml
+
+# no compiled assets
+public/assets
