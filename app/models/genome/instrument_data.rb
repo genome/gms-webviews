@@ -1,5 +1,6 @@
 class Genome::InstrumentData < ActiveRecord::Base
   self.table_name = 'instrument.data'
+  self.primary_key = 'id'
   has_many   :instrument_data_attributes
   belongs_to :library
 

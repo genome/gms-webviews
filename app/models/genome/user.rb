@@ -1,5 +1,6 @@
 class Genome::User < ActiveRecord::Base
   self.table_name = 'subject.user'
+  self.primary_key = :email
 
   def created_projects
     get_project_by_role( 'creator' )

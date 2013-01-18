@@ -2,6 +2,7 @@ class Genome::BuildInput < ActiveRecord::Base
 
     self.table_name = 'model.build_input'
     belongs_to :build
+    self.primary_keys = :build_id, :value_class_name, :value_id, :name
 
     def get_input_value_internal
         if self.value_class_name.include?("Genome::Model::Build")
