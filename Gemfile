@@ -65,3 +65,5 @@ gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
 gem 'less-rails'
 gem 'composite_primary_keys'
+
+gem 'warbler'
