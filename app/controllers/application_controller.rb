@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
-  before_filter :authorize_user
+  #before_filter :authorize_user
 
   def render_404(exception)
     flash.now[:error] = exception.message
