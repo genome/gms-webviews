@@ -6,13 +6,19 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-gem 'pg'
 gem 'twitter-bootstrap-rails'
 gem 'rsolr'
 gem 'will_paginate'
 gem 'haml'
-gem 'therubyracer'
-gem 'nokogiri'
+gem 'therubyrhino'
+
+platforms :ruby do
+    gem 'nokogiri'
+end
+
+platforms :jruby do
+    gem 'nokogiri'
+end
 
 group :development do
     gem 'pry'
@@ -20,6 +26,10 @@ group :development do
     gem 'pry-nav'
     #gem 'rack-mini-profiler'
 end
+
+gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbcpostgresql-adapter'
+gem 'jdbc-postgres'
 
 #Gems used only for assets and not required
 # in production environments by default.
@@ -53,5 +63,5 @@ gem 'kaminari'
 
 gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
-gem 'libv8'
 gem 'less-rails'
+gem 'composite_primary_keys'
