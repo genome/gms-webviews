@@ -25,3 +25,6 @@ config/database.yml
 
 # no compiled assets
 public/assets
+
+# do not include warbler-built (or otherwise) war files
+*.war
