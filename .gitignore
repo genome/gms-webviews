@@ -28,3 +28,4 @@ public/assets
 
 # do not include warbler-built (or otherwise) war files
 *.war
+.rbenv*
