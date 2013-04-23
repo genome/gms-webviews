@@ -67,3 +67,7 @@ gem 'less-rails'
 gem 'composite_primary_keys'
 
 gem 'warbler'
+gem 'fabrication'
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
