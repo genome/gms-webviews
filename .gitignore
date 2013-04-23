@@ -16,6 +16,8 @@
 
 # ignore developer-placed rvmrc files.
 .rvmrc
+# ignore rbenv files too
+.ruby-version
 
 #ignore vim swapfiles
 *.swp
