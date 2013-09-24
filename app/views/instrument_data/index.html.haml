@@ -1,3 +1,4 @@
+=render partial: 'shared/side_nav', locals: tab_hash
 %table.table.table-bordered.gms-entity-index{id: 'instrument-data-datatable', data: {source: instrument_data_index_url(format: :json)}}
   %thead
     %tr

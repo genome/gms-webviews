@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def tab_hash
+    ['model', 'processing_profile', 'sample', 'instrument_data'].each_with_object({}) do |item, h|
+      h["#{item}_active".to_sym] = if params[:controller] == item
+                              'active'
+                            else
+                              nil
+                            end
+    end
+  end
+
   def link_span(text, path, icon_class = nil)
     if icon_class
       link_to(
@@ -61,4 +71,5 @@ module ApplicationHelper
       input.value_id
     end
   end
+
 end

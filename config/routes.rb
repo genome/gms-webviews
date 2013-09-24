@@ -1,5 +1,5 @@
 GenomeDemo::Application.routes.draw do
-  root :to => "search#search_results"
+  root :to => "model#index"
   match 'search' => 'search#search_results'
 
   resources :library, only: [:show]
