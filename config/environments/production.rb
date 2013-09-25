@@ -66,5 +66,5 @@ GenomeDemo::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   #use the DummyShibboleth rack middleware, so simulate the request headers
-  config.middleware.use DummyShibboleth
+  #config.middleware.use DummyShibboleth
 end
