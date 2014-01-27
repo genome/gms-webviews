@@ -41,7 +41,7 @@ class BuildPresenter < SimpleDelegator
       "status"             => @build.master_event.event_status,
       "user"               => @build.user_name,
       "model"              => ->(b) { link_span(b.model_id, model_path(b.model)) },
-      "subject"            => ->(b) { link_span(b.model.subject_id, subject_path(b.model.subject_id)) },
+      "subject"            => ->(b) { link_span(b.model.subject_id, sample_path(b.model.subject_id)) },
       "files"              => ->(b) { link_span('data', data_dir(b)) + link_span('errors', log_dir(b,'err')) + link_span('output', log_dir(b,'out')) },
       "software"           => 'stuff',
       "processing_profile" => ->(b) { link_span(b.model.processing_profile.name, processing_profile_path(b.model.processing_profile))},
