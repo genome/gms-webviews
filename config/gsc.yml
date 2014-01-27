@@ -1,11 +1,11 @@
 development:
   gsc:
-    web_path: 'http://gscweb.gsc.wustl.edu'
+    web_path: '/'
 
 test:
   gsc:
-    web_path: 'http://gscweb.gsc.wustl.edu'
+    web_path: '/'
 
 production:
   gsc:
-    web_path: 'http://gscweb.gsc.wustl.edu'
+    web_path: '/'
