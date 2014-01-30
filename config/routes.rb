@@ -4,7 +4,7 @@ GenomeDemo::Application.routes.draw do
 
   resources :library, only: [:show]
   resources :subject, only: [:show, :index]
-  resources :build, only: [:show]
+  resources :build, only: [:show, :index]
   resources :processing_profile, only: [:show, :index]
   resources :sample, only: [:show, :index]
   resources :individual, only: [:show]
