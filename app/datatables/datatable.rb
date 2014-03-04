@@ -22,10 +22,10 @@ class Datatable
   end
 
   def fetch_objects
-    objects = model_class_object.order("#{model_class_object.table_name}.#{sort_column} #{sort_direction}")
+    objects = scope.order("#{sort_column} #{sort_direction}")
     objects = objects.page(page).per_page(per_page)
     if params[:sSearch].present?
-      objects = objects.where("lower(#{model_class_object.table_name}.name) like lower(:search)", search: "%#{params[:sSearch]}%")
+      objects = objects.where(search_string, search: "%#{params[:sSearch]}%")
     end
 
     objects
@@ -44,8 +44,20 @@ class Datatable
     params[:sSortDir_0] == "desc" ? "desc" : "asc"
   end
 
+  def scope
+    model_class_object
+  end
+
   private
-    def model_class_object
-      self.model_class.constantize
-    end
+  def model_class_object
+    self.model_class.constantize
+  end
+
+  def search_string
+    searchable_columns.map { |col| "lower(#{col}) like lower(:search)" }.join(' OR ')
+  end
+
+  def searchable_columns
+    []
+  end
   end

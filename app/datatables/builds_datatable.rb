@@ -17,8 +17,16 @@ class BuildsDatatable < Datatable
   end
 
   def sort_column
-    columns = %w[build_id status model_name]
+    columns = %w[model.build.build_id model.event.event_status model.model.name]
     columns[params[:iSortCol_0].to_i]
+  end
+
+  def scope
+    super.eager_load(:master_event, :model)
+  end
+
+  def searchable_columns
+    %w[model.build.build_id model.event.event_status model.model.name]
   end
 
 end

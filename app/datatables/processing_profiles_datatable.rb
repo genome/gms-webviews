@@ -15,8 +15,12 @@ class ProcessingProfilesDatatable < Datatable
   end
 
   def sort_column
-    columns = %w[name]
+    columns = %w[model.processing_profile.name]
     columns[params[:iSortCol_0].to_i]
+  end
+
+  def searchable_columns
+    %w[model.processing_profile.name]
   end
 
 end

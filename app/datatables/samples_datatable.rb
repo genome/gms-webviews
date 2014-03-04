@@ -1,11 +1,10 @@
 class SamplesDatatable < Datatable
-  
   delegate :params, :h, :link_to, :sample_path, to: :@view
-  
+
   def model_class
     "Genome::Subject"
   end
-    
+
   def data
     objects.map do |sample|
       [
@@ -13,10 +12,13 @@ class SamplesDatatable < Datatable
       ]
     end
   end
-  
+
   def sort_column
-    columns = %w[name]
+    columns = %w[subject.subject.name]
     columns[params[:iSortCol_0].to_i]
   end
 
+  def searchable_columns
+    %w[subject.subject.name]
+  end
 end

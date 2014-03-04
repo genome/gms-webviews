@@ -1,11 +1,11 @@
 class ModelsDatatable < Datatable
-  
+
   delegate :params, :h, :link_to, :model_path, :processing_profile_path, to: :@view
-  
+
   def model_class
     "Genome::Model"
   end
-    
+
   def data
     objects.map do |model|
       [
@@ -14,10 +14,18 @@ class ModelsDatatable < Datatable
       ]
     end
   end
-  
+
+  def scope
+    super.eager_load(:processing_profile)
+  end
+
   def sort_column
-    columns = %w[name processing_profile_id]
+    columns = %w[model.model.name model.processing_profile.name]
     columns[params[:iSortCol_0].to_i]
+  end
+
+  def searchable_columns
+    %w[model.model.name model.processing_profile.name]
   end
 
 end
