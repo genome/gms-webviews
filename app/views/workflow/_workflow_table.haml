@@ -39,6 +39,6 @@
             -if op.elapsed_time
               =distance_of_time_in_words(op.elapsed_time)
           %td
-            =link_to 'Output', "/#{op.stdout}"
+            =link_to 'Output', "#{op.stdout}"
           %td
-            =link_to 'Errors', "/#{op.stderr}"
+            =link_to 'Errors', "#{op.stderr}"

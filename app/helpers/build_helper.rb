@@ -64,6 +64,6 @@ module BuildHelper
   end
 
   def data_dir(build)
-    "/#{build.data_directory}"
+    "#{build.data_directory}"
   end
 end
