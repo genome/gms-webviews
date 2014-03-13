@@ -46,7 +46,7 @@ module ApplicationHelper
     when /^Genome::FeatureList/
       #path_finder = 'feature_list_path'
     when /^Genome::File::Fasta/
-      path_url = "/#{input.value_id}"
+      path_url = "#{input.value_id}"
       extra_classes = "icon-file icon-white"
       type_label = "FASTA file"
     when /^Genome::Model/  # Keep this one at the end, since other classes start with Genome::Model, too
