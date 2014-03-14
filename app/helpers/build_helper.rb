@@ -60,7 +60,7 @@ module BuildHelper
   end
 
   def log_dir(build, format)
-    "#{data_dir(build)}/logs/#{build.master_event.id}.#{format}"
+    "#{data_dir(build)}/logs/workflow-server.#{format}"
   end
 
   def data_dir(build)
