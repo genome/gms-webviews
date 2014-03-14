@@ -18,7 +18,9 @@
         <ul>
           <li><%= link_span(@last_complete_build.build_id, build_path(@last_complete_build))  %></li>
           <li><%= link_span('data directory', "#{@last_complete_build.data_directory}", 'icon-folder-open icon-white')   %></li>
-          <li><%= link_span('Summary Report', "#{@last_complete_build.data_directory}/reports/Summary/report.html", 'icon-file icon-white')  %></li>
+          <% if @last_complete_build.subclass_name =~ /ReferenceAlignment/ %>
+            <li><%= link_span('Summary Report', "#{@last_complete_build.data_directory}/reports/Summary/report.html", 'icon-file icon-white')  %></li>
+          <% end %>
         </ul>
       <% else %>
         none
